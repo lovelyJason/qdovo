@@ -3,6 +3,11 @@ title: mysql基础命令
 date: 2019-08-10 13:54:21
 tags:
 ---
+
+mysql常用命令集合
+
+<!-- more -->
+
 #   MySQL
 
 ## 数据库 MySQL ##

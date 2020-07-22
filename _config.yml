@@ -3,12 +3,13 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: 前端ovo
+favicon: https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/u=3614830019,3989570087&fm=26&gp=0.jpg
 subtitle: ''
 description: ''
 keywords:
-author: John Doe
-language: en
+author: Jason Huang
+language: zn-CN
 timezone: ''
 
 # URL
@@ -45,7 +46,7 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace: ''
@@ -94,7 +95,80 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: volantis
-
+# 覆盖主题配置
+theme_config:
+  style:
+    sidebar:
+      effect: [blur] # [shadow, floatable, blur]
+    body:
+      effect: [] # [shadow, floatable, blur]
+    color:
+      site_footer: 'rgba(8,8,8,0.75)'
+    # 滚动条,有浏览器兼容性
+    scrollbar:
+      size: 4px
+      border: 2px
+      color: '#2196f3'
+      hover: '#ff5722'
+  cover:
+    logo: null
+    display: 
+      home: false
+      archive: false
+      others: false
+    features:
+      - name: 文档
+        icon: fas fa-book
+        url: /v3/getting-started/
+      - name: 帮助
+        icon: fas fa-question-circle
+        url: faqs/
+      - name: 示例
+        icon: fas fa-play-circle
+        url: /examples/
+      - name: 社区
+        icon: fas fa-fan fa-spin
+        url: /contributors/
+  navbar:
+    logo: null
+  widget:
+    blogger:
+      avatar: https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/apic21404.jpg
+  meta:
+    updated:
+      title: '本页文档最后更新于：'
+    author:
+      avatar: https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/apic21404.jpg
+      name: Jason Huang
+      url: https://qdovo.com
+  comments:
+    title: <i class='fas fa-comments'></i> 用户交流区
+    subtitle: 这里仅供用户之间进行交流，有任何疑问请前往GitHub提交Issue。在评论区进行提问将不会收到开发者的任何回复！
+    valine:
+      appId: FIKAgh6n0pUM08JXxhJHChVQ-MdYXbMMI
+      appKey: RJGiOYFc1fBvfox4frBPpRzU
+      requiredFields: ['nick']
+      path: /
+      placeholder: 这里仅供用户之间进行交流，有任何疑问请前往GitHub提交Issue。在评论区进行提问将不会收到开发者的任何回复！
+  footer:
+    layout: [aplayer, social, info, copyright]
+    social:
+      - icon: fas fa-rss
+        url: atom.xml
+      - icon: fab fa-github
+        url: https://github.com/lovelyJason
+    copyright: '[Copyright © 2017-2020 Jason Huang](https://qdovo.com)'
+  plugins:
+    comment_typing: false
+    backstretch:
+    #   enable: false
+      position: fixed
+      images: null            # For personal use only. At your own risk if used for commercial purposes !!!
+        # - https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/scenic/4456776-3705836a00587303.jpeg
+    aplayer:
+      enable: false
+    highlightjs:
+      css: https://cdn.jsdelivr.net/npm/highlight.js@10.1.1/styles/ocean.css
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:

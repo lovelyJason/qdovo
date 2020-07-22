@@ -1,12 +1,13 @@
 ---
+group: list
 title: git常用命令
 categories: 技术
 tags: [编程,感悟]
 ---
 
+git常用命令集合
 
-
-
+<!-- more -->
 
 ## 1.1. 学习目标
 
