@@ -9,7 +9,7 @@ subtitle: ''
 description: ''
 keywords:
 author: Jason Huang
-language: zn-CN
+language: zh-CN
 timezone: ''
 
 # URL
@@ -131,14 +131,21 @@ theme_config:
         url: /contributors/
   navbar:
     logo: null
+  # 小部件
   widget:
+    # 博客设置
     blogger:
-      avatar: https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/apic21404.jpg
+      avatar: https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/timg.jpeg
+    # qrcode widget
+    donate:
+      images:
+        - https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/0c141f62ffef39f3c5b85918adff975a.png
+        - https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/dfca5b720de4970eb67179b49e8ed895.png
   meta:
     updated:
       title: '本页文档最后更新于：'
     author:
-      avatar: https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/apic21404.jpg
+      avatar: https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/timg.jpeg
       name: Jason Huang
       url: https://qdovo.com
   comments:
@@ -149,7 +156,7 @@ theme_config:
       appKey: bFrvxEDJJJsEWvUtkHjE1fpJ
       requiredFields: ['nick']
       path: /
-      placeholder: 这里仅供用户之间进行交流，有任何疑问请前往GitHub提交Issue。在评论区进行提问将不会收到开发者的任何回复！
+      placeholder: 这里仅供用户之间进行交流！
   footer:
     layout: [aplayer, social, info, copyright]
     social:
@@ -169,6 +176,9 @@ theme_config:
       enable: false
     highlightjs:
       css: https://cdn.jsdelivr.net/npm/highlight.js@10.1.1/styles/ocean.css
+    # 生成rss
+    hexo-generator-feed:
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:

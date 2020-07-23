@@ -1,7 +1,7 @@
 ---
 title: mysql基础命令
 date: 2019-08-10 13:54:21
-tags:
+tags: [数据库]
 ---
 
 mysql常用命令集合

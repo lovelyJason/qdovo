@@ -1,6 +1,7 @@
 ---
 title: vscode调试篇指南
 categories: 工具
+tags: [工具]
 ---
 
 分享一些在工作和生活当中很常见的些关于vscode调试的用法,让调试更方便
