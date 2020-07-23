@@ -1,0 +1,24 @@
+- name: 首页
+  icon: fas fa-home
+  url: /
+- name: 分类
+  icon: fas fa-folder-open
+  url: categories/
+- name: 标签
+  icon: fas fa-tags
+  url: tags/
+- name: 归档
+  icon: fas fa-archive
+  url: archives/
+- name: 友链
+  icon: fas fa-link
+  url: friends/
+- name: 关于
+  icon: fas fa-info-circle
+  url: about/
+- name: 更多
+  icon: fas fa-ellipsis-h
+  rows:
+    - name: 小站历程
+      icon: fas fa-history
+      url: /history

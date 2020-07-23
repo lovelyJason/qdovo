@@ -104,6 +104,7 @@ theme_config:
       effect: [] # [shadow, floatable, blur]
     color:
       site_footer: 'rgba(8,8,8,0.75)'
+      hljs_before_color: 'rgb(150, 162, 171)'
     # 滚动条,有浏览器兼容性
     scrollbar:
       size: 4px
@@ -131,6 +132,7 @@ theme_config:
         url: /contributors/
   navbar:
     logo: null
+    search: 世界之大,我需要搜索...
   # 小部件
   widget:
     # 博客设置
