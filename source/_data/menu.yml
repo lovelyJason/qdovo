@@ -1,24 +1,27 @@
 - name: 首页
-  icon: fas fa-home
+  icon: iconfont icon-fangzi
   url: /
 - name: 分类
-  icon: fas fa-folder-open
+  icon: iconfont icon-ziyuan
   url: categories/
 - name: 标签
-  icon: fas fa-tags
+  icon: iconfont icon-biaoqian
   url: tags/
 - name: 归档
-  icon: fas fa-archive
+  icon: iconfont icon-nav_wodeguidang
   url: archives/
 - name: 友链
-  icon: fas fa-link
+  icon: iconfont icon-lianjie
   url: friends/
 - name: 关于
-  icon: fas fa-info-circle
+  icon: iconfont icon-about
   url: about/
 - name: 更多
-  icon: fas fa-ellipsis-h
+  icon: iconfont icon-19
   rows:
     - name: 小站历程
-      icon: fas fa-history
+      icon: iconfont icon-fenlei-lishicopy
       url: /history
+    - name: 加需求
+      icon: iconfont icon-jiacu
+      url: /needs

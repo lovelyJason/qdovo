@@ -14,7 +14,7 @@ timezone: ''
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://yoursite.com
+url: http://qdovo.com
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -132,7 +132,7 @@ theme_config:
         url: /contributors/
   navbar:
     logo: null
-    search: 世界之大,我需要搜索...
+    search: 世界之大,我需要探索...
   # 小部件
   widget:
     # 博客设置
@@ -166,14 +166,14 @@ theme_config:
         url: atom.xml
       - icon: fab fa-github
         url: https://github.com/lovelyJason
-    copyright: '[Copyright © 2017-2020 Jason Huang](https://qdovo.com)'
+    copyright: '[Copyright © 2020-2020 Jason Huang](https://qdovo.com)'
   plugins:
     comment_typing: false
     backstretch:
     #   enable: false
       position: fixed
-      images: null            # For personal use only. At your own risk if used for commercial purposes !!!
-        # - https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/scenic/4456776-3705836a00587303.jpeg
+      images:             # For personal use only. At your own risk if used for commercial purposes !!!
+        - https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/scenic/4456776-3705836a00587303.jpeg
     aplayer:
       enable: false
     highlightjs:
@@ -184,4 +184,6 @@ theme_config:
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: ''
+  type: 'git'
+  repo: https://github.com/lovelyJason/qdovo.git
+  branch: gh-pages
