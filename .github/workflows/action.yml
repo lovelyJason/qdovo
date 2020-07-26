@@ -5,7 +5,7 @@ jobs:
     name: Sftp-Deploy-Action
     runs-on: centos-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v1
       with:
         fetch-depth: 2
     - name: Use Node.js 12.16.3
