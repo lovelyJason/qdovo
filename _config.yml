@@ -160,7 +160,7 @@ theme_config:
       path: /
       placeholder: 这里仅供用户之间进行交流！
   footer:
-    layout: [aplayer, social, info, copyright]
+    layout: [aplayer, social, license, info, copyright]
     social:
       - icon: fas fa-rss
         url: atom.xml
