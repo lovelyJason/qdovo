@@ -37,8 +37,15 @@ Font-matter中自定义属性不生效，其他可以
 
 与meta不同，除主题现有的widget，可以创建自定义的widget，可以单独写在_data中
 
+## 独立渲染
+
++ 根目录配置文件配置skip
++ md的front-matter的layout设置为false
+
 ## 遇到的问题
 
 + 在某个独立页面根据插入js或者css,只有在当前页面刷新时才成功插入,其他页面进入无效果
 
-+ 一个大坑,Nunjucks模板引擎语法和标签插件{% %}冲突的问题
++ 一个大坑,Nunjucks模板引擎语法和标签插件{% %}冲突的问题,{% raw %} {% end raw %}可以渲染里面的html代码,但对标签插件不生效,目前不清楚是否主题原因
++ 实际上hexo server是hexo-server提供的命令,hexo-cli上无法调试此server命令
++ 切换主题务必hexo clean否则缓存样式丢失
