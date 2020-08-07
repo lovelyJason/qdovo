@@ -771,9 +771,9 @@ portfolio .hover-bg > a {
 .col-xs-6 {
   width: 100%;
 }
+/* 第一屏 */
 #home {
-  background: url(http://v.bootstrapmb.com/2017/9/mrg5t33/images/bg-mia.jpg)
-    no-repeat center center fixed;
+  background: url(http://v.bootstrapmb.com/2017/9/mrg5t33/images/bg-mia.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -781,19 +781,22 @@ portfolio .hover-bg > a {
   font-family: "Raleway", sans-serif;
 }
 #aboutme {
-  background: #ededed;
+  background: url(https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/tic-tac-toe.png);
+  background-color: #ededed;
   font-family: "Raleway", sans-serif;
 }
 #mywork {
-  background: #fff;
+  background: url(https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/code-computer.png) no-repeat top center;
+  background-size: cover;
+  /* background-color: #fff; */
   font-family: "Raleway", sans-serif;
 }
 #contactme {
-  /* background: url(../images/bg-contact.jpg) no-repeat center center fixed; */
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
+  background: url(https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/tic-tac-toe.png);
+  /* -webkit-background-size: cover; */
+  /* -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-size: cover; */
   font-family: "Raleway", sans-serif;
 } /*Index2*/
 #homesec {
