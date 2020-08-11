@@ -161,13 +161,14 @@ theme_config:
       path: /
       placeholder: 这里仅供用户之间进行交流！
   footer:
-    layout: [aplayer, social, license, info, copyright]
+    layout: [aplayer, social, license, info, beian, copyright]
     social:
       - icon: fas fa-rss
         url: atom.xml
       - icon: fab fa-github
         url: https://github.com/lovelyJason
     copyright: '[Copyright © 2020-2020 Jason Huang](https://qdovo.com)'
+    beian: 皖ICP备17007694号-3
   plugins:
     comment_typing: false
     backstretch:
@@ -181,6 +182,10 @@ theme_config:
       css: https://cdn.jsdelivr.net/npm/highlight.js@10.1.1/styles/ocean.css
     # 生成rss
     hexo-generator-feed:
+
+# stylus
+stylus:
+  compress: true
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
