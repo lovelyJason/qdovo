@@ -92,6 +92,9 @@ h3 {
   width: 200px;
   height: 200px;
   z-index: 999;
+  background: url('https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/61597333106_.pic.jpg') no-repeat;
+  background-position-y: -22px;
+  background-size: 100% auto;
 }
 .info .info_detail .zoom img {
   width: 100%;
