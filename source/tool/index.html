@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>吃饭睡觉打豆豆</title>
+  <link rel="stylesheet" href="https://www.layuicdn.com/layui/css/layui.css">
+  <style>
+    .area {
+      width: 500px;
+      height: 200px;
+      border: 1px solid rgb(229, 194, 194);
+      margin: 60px auto 0;
+      position: relative;
+    }
+    .area button {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto auto;
+    }
+    .identify-res {
+      display: none;
+    }
+    .identify-res .title {
+      width: 500px;
+      margin: 20px auto;
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .identify-res .result {
+      box-sizing: border-box;
+      width: 500px;
+      padding: 10px;
+      margin: 0 auto;
+      border: 1px solid skyblue;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="area">
+    <button type="button" class="layui-btn" id="test1">
+      <i class="layui-icon">&#xe67c;</i>上传图片
+    </button>
+  </div>
+  <div class="identify-res" id="showResult">
+    <div class="title">识别结果</div>
+    <div class="result" id="result">
+    </div>
+  </div>
+  <script src="https://www.layuicdn.com/layui-v2.5.6/layui.all.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.0/axios.min.js"></script>
+  <script>
+    ; (function () {
+      function ocr(data) {
+        axios.post('https://www.qdovo.com/api/ocr', data).then(res => {
+          const { status, data } = res
+          if(status !== 0) return
+          const { words_result } = data
+          const identifyStr = words_result.join('---')
+          const showEle = document.getElementById('showResult')
+          const result = document.getElementById('result')
+          showEle.style.display = 'block'
+          result.innerText = identifyStr
+        })
+      }
+      var upload = layui.upload;
+      //执行实例
+      var uploadInst = upload.render({
+        elem: '#test1', //绑定元素
+        url: 'https://www.qdovo.com/api/upload', //上传接口
+        done: function (res) {
+          //上传完毕回调
+          const { status, data: imgUrl } = res
+          if(status !== 0) return
+          const filename = imgUrl.split("/").slice(-1)[0];
+          const data = { filename }
+          ocr(data)
+        },
+        error: function () {
+          //请求异常回调
+        }
+      });
+      // ocr start
+      
+    })()
+  </script>
+</body>
+
+</html>
