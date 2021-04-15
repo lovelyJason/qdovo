@@ -8,12 +8,15 @@
   <link rel="stylesheet" href="https://www.layuicdn.com/layui/css/layui.css">
   <style>
     .area {
-      width: 500px;
-      height: 200px;
+      width: 30vw;
+      min-width: 160px;
+      height: 22vh;
+      min-height: 180px;
       border: 1px solid rgb(229, 194, 194);
-      margin: 60px auto 0;
+      margin: 20px auto 0;
       position: relative;
     }
+
     .area button {
       position: absolute;
       top: 0;
@@ -22,72 +25,206 @@
       right: 0;
       margin: auto auto;
     }
+
     .identify-res {
       display: none;
     }
+
     .identify-res .title {
-      width: 500px;
+      width: 30vw;
       margin: 20px auto;
       font-size: 16px;
       font-weight: 600;
     }
+
     .identify-res .result {
       box-sizing: border-box;
-      width: 500px;
+      width: 30vw;
       padding: 10px;
       margin: 0 auto;
       border: 1px solid skyblue;
+    }
+
+    .layui-progress {
+      display: none;
+    }
+
+    .chose-ocrtype {
+      width: 30vw;
+      min-width: 160px;
+      margin: 20px auto 0;
+      font-size: 16px;
+      display: flex;
+    }
+    .desc {
+      text-align: center;
+      font-size: 16px;
+      margin-top: 30px;
+    }
+    .desc span {
+      font-size: 16px;
+      margin-right: 6px;
     }
   </style>
 </head>
 
 <body>
-  <div class="area">
+  <div class="desc"><span>支持</span><span class="layui-badge layui-bg-orange">点击</span><span class="layui-badge layui-bg-greeb">拖拽</span><span class="layui-badge layui-bg-blue">粘贴</span>上传<span></span></div>
+  <form action="" class="layui-form">
+    <div class="chose-ocrtype">
+      <span style="line-height: 36px;">请先选择识别类型</span>
+      <div class="layui-input-block">
+        <input type="radio" name="type" value="0" title="标准版">
+        <input type="radio" name="type" value="1001" title="高精准含位置版" checked>
+      </div>
+    </div>
+
+  </form>
+  <div class="area" id="upload-box">
     <button type="button" class="layui-btn" id="test1">
       <i class="layui-icon">&#xe67c;</i>上传图片
     </button>
+    <div class="layui-progress layui-progress-big" lay-filter="demo" lay-showPercent="true">
+      <div class="layui-progress-bar" lay-percent="0%"></div>
+    </div>
   </div>
   <div class="identify-res" id="showResult">
     <div class="title">识别结果</div>
     <div class="result" id="result">
     </div>
   </div>
+  <!-- <iframe src="http://appmarketbak2.kingdee.com/jdyapps" frameborder="0" style="display: block;width: 600px;height: 600px;margin: 0 auto"></iframe> -->
+  <iframe src="https://www.sanshao.top" style="width: 500px;height: 500px" frameborder="0"></iframe>
   <script src="https://www.layuicdn.com/layui-v2.5.6/layui.all.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
   <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.0/axios.min.js"></script>
   <script>
     ; (function () {
+      const host = window.location.host
+      const isDev = host.includes('localhost') || host.includes('127.0.0.1')
+      var upload = layui.upload;
+      var layer = layui.layer
+      var element = layui.element
+      var form = layui.form
+      var progress = document.getElementsByClassName('layui-progress')[0]
+      var ocrType = 1001
       function ocr(data) {
-        axios.post('https://www.qdovo.com/api/ocr', data).then(res => {
-          const { status, data } = res
-          if(status !== 0) return
-          const { words_result } = data
-          const identifyStr = words_result.join('---')
-          const showEle = document.getElementById('showResult')
-          const result = document.getElementById('result')
+        return axios.post('https://www.qdovo.com/api/ocr', data).then(res => {
+          var { status, data } = res.data
+          if (status !== 0) return
+          var { words_result, error_msg } = data
+          if (!words_result) {
+            layer.msg(error_msg)
+            return
+          }
+          var identifyStr = ''
+          identifyStr = words_result.map(val => {
+            return val.words
+          }).join('\n')
+          var showEle = document.getElementById('showResult')
+          var result = document.getElementById('result')
           showEle.style.display = 'block'
           result.innerText = identifyStr
         })
       }
-      var upload = layui.upload;
       //执行实例
       var uploadInst = upload.render({
-        elem: '#test1', //绑定元素
-        url: 'https://www.qdovo.com/api/upload', //上传接口
-        done: function (res) {
+        elem: '#upload-box', //绑定元素
+        url: isDev ? 'http://localhost:3000/api/upload' : 'https://www.qdovo.com/api/upload', //上传接口
+        headers: {
+
+        },
+        drag: true,
+        before: function () {
+          layer.load()
+        },
+        progress: function (n) {
+          progress.style.display = 'block'
+          var percent = n + '%'
+          element.progress('demo', percent)
+        },
+        done: async function (res) {
+          layer.closeAll('loading')
+          progress.style.display = 'none'
           //上传完毕回调
-          const { status, data: imgUrl } = res
-          if(status !== 0) return
-          const filename = imgUrl.split("/").slice(-1)[0];
-          const data = { filename }
-          ocr(data)
+          const { status, data: imgUrl, msg } = res
+          if (status !== 0) {
+            layer.msg(msg || '你在干啥呢')
+            return
+          }
+          var filename = imgUrl.split("/").slice(-1)[0];
+          var data = { filename, type: +ocrType }
+          await ocr(data)
         },
         error: function () {
           //请求异常回调
+          layer.closeAll('loading')
+          progress.style.display = 'none'
         }
       });
-      // ocr start
-      
+      // layui.element.progress('demo', '40%')
+      form.on('radio', function (data) {
+        ocrType = data.value
+      });
+
+      function uploadBlob (blob) {
+        layer.load()
+        let fd = new FormData()
+        fd.append('file', blob)
+        $.ajax({
+          url: 'https://www.qdovo.com/api/upload',
+          type: 'post',
+          data: fd,
+          processData: false,
+          contentType: false,
+          success: async function (res) {
+            let imgUrl = res.data
+            let filename = imgUrl.split("/").slice(-1)[0];
+            let data = { filename, type: +ocrType }
+            await ocr(data)
+          },
+          error: function (error) {
+            layer.msg(errror.message || '你在嘎哈呢')
+          },
+          complete: function() {
+            layer.closeAll('loading')
+          }
+        })
+      }
+
+      document.addEventListener("paste", function (e) {
+        var cbd = e.clipboardData;
+        var ua = window.navigator.userAgent;
+
+        // 如果是 Safari 直接 return
+        if (!(e.clipboardData && e.clipboardData.items)) {
+          return;
+        }
+
+        // Mac平台下Chrome49版本以下 复制Finder中的文件的Bug Hack掉
+        if (cbd.items && cbd.items.length === 2 && cbd.items[0].kind === "string" && cbd.items[1].kind === "file" &&
+          cbd.types && cbd.types.length === 2 && cbd.types[0] === "text/plain" && cbd.types[1] === "Files" &&
+          ua.match(/Macintosh/i) && Number(ua.match(/Chrome\/(\d{2})/i)[1]) < 49) {
+          return;
+        }
+
+        for (var i = 0; i < cbd.items.length; i++) {
+          var item = cbd.items[i];
+          if (item.kind == "file") {
+            var blob = item.getAsFile();
+            if (blob.size === 0) {
+              return;
+            }
+            // blob 就是从剪切板获得的文件 可以进行上传或其他操作
+            uploadBlob(blob)
+          }
+        }
+      }, false);
     })()
+  </script>
+  <script>
+    document.cookie = 'masterapp_samesite_client=qdovo;secure=true;sameSite=none'
+    document.cookie = 'masterapp_nosamesite_client=qdovo.com'
   </script>
 </body>
 

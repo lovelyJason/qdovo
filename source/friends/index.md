@@ -1,15 +1,16 @@
 ---
 layout: links
-title: 我的朋友们
-# links:
-#   - group: 分组1
-#     icon: fas fa-user-tie
-#     items:
-#     - name: 博客1
+title: 我和我的朋友们
+links:
+  - group: 前端盆友们
+    icon: fas fa-user-tie
+    items:
+    - name: shymean
+      avatar: http://img.shymean.com/oPic/1609408111839_116.png
+      url: https://shymean.com
+      # backgroundColor: rgba(255, 87, 34, .15)
 
 ---
-
-正在准备中...
 
 <!-- more -->
 

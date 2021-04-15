@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+  <title>Document</title>
+  <style>
+    #btn {
+      position: fixed;
+      top: 50px;
+      left: 100px;
+    }
+
+    #btn2 {
+      position: fixed;
+      top: 50px;
+      left: 200px;
+    }
+  </style>
+</head>
+
+<body>
+  <img src="" alt="" id="img">
+  <button id="btn">换个美女</button>
+  <button id="btn2">emmm少儿不宜的图</button>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.0/axios.min.js"></script>
+  <script>
+    function getImg(url) {
+      // const { code, acgurl, width, height } = res.data
+      $.ajax({
+        url,
+        type: 'get',
+        dataType: 'json'
+      }).done(res => {
+        console.log(res)
+        try {
+          const { imgurl, width, height } = res
+          // console.log(res)
+          var img = document.getElementById('img')
+          img.src = imgurl
+          img.style.width = width
+          img.style.height = height
+        } catch (error) {
+          console.log(error.message)
+        }
+      }).fail(error => {
+        console.log(error)
+      })
+      // $.getJSON('http://www.dmoe.cc/random.php?return=json', function (res) {
+      //   console.log(res)
+      // })
+    }
+    function getPixiv() {
+      $.ajax({
+        url: '/api/pixiv',
+        type: 'get',
+        dataType: 'json'
+      }).done(res => {
+        // console.log(res)
+        try {
+          const { data = [] } = res
+          const { url, width, height } = data[0]
+          // console.log(res)
+          console.log(url)
+          var img = document.getElementById('img')
+          img.src = url
+          img.style.width = width
+          img.style.height = height
+        } catch (error) {
+          console.log(error.message)
+        }
+      }).fail(error => {
+        console.log(error)
+      })
+    }
+    getImg('/api/random')
+    document.getElementById('btn').addEventListener('click', function () {
+      getImg('/api/random')
+    })
+    document.getElementById('btn2').addEventListener('click', function () {
+      getPixiv()
+    })
+  </script>
+</body>
+
+</html>

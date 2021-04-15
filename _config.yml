@@ -33,6 +33,8 @@ i18n_dir: :lang
 skip_render:
   - "resume/**"
   - "tool/**"
+  - "test/**"
+  - "erciyuan/**"
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -115,7 +117,7 @@ theme_config:
       hover: '#ff5722'
   cover:
     logo: null
-    display: 
+    display:
       home: false
       archive: false
       others: false
@@ -160,7 +162,8 @@ theme_config:
       appKey: bFrvxEDJJJsEWvUtkHjE1fpJ
       requiredFields: ['nick']
       path: /
-      placeholder: 这里仅供用户之间进行交流！
+      placeholder: 这里仅供用户之间进行交流！,
+      visitor: true
   footer:
     layout: [aplayer, social, license, info, beian, copyright]
     social:
@@ -169,7 +172,7 @@ theme_config:
       - icon: fab fa-github
         url: https://github.com/lovelyJason
     copyright: '[Copyright © 2020-2020 Jason Huang](https://qdovo.com)'
-    beian: 皖ICP备17007694号-3
+    beian: <a href="https://beian.miit.gov.cn">皖ICP备17007694号-3</a>
   plugins:
     comment_typing: false
     backstretch:
