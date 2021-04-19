@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-  <title>Document</title>
+  <title>loli图</title>
+  <link rel="stylesheet" href="https://www.layuicdn.com/layui/css/layui.css">
   <style>
     #btn {
       position: fixed;
@@ -25,64 +26,93 @@
   <img src="" alt="" id="img">
   <button id="btn">换个美女</button>
   <button id="btn2">emmm少儿不宜的图</button>
+  <script src="https://www.layuicdn.com/layui-v2.5.6/layui.all.js"></script>
   <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
   <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.0/axios.min.js"></script>
   <script>
-    function getImg(url) {
-      // const { code, acgurl, width, height } = res.data
-      $.ajax({
-        url,
-        type: 'get',
-        dataType: 'json'
-      }).done(res => {
-        console.log(res)
-        try {
-          const { imgurl, width, height } = res
+    ; (function () {
+      function getImg(url) {
+        return $.ajax({
+          url,
+          type: 'get',
+          dataType: 'json'
+        }).done(res => {
+          console.log(res)
+          try {
+            const { imgurl, width, height } = res
+            // console.log(res)
+            var img = document.getElementById('img')
+            img.src = imgurl
+            img.style.width = width
+            img.style.height = height
+          } catch (error) {
+            console.log(error.message)
+          }
+        }).fail(error => {
+          console.log(error)
+        })
+      }
+      function getPixiv() {
+        return $.ajax({
+          url: '/api/pixiv',
+          type: 'get',
+          dataType: 'json'
+        }).done(res => {
           // console.log(res)
-          var img = document.getElementById('img')
-          img.src = imgurl
-          img.style.width = width
-          img.style.height = height
-        } catch (error) {
-          console.log(error.message)
-        }
-      }).fail(error => {
-        console.log(error)
-      })
-      // $.getJSON('http://www.dmoe.cc/random.php?return=json', function (res) {
-      //   console.log(res)
-      // })
-    }
-    function getPixiv() {
-      $.ajax({
-        url: '/api/pixiv',
-        type: 'get',
-        dataType: 'json'
-      }).done(res => {
-        // console.log(res)
-        try {
-          const { data = [] } = res
-          const { url, width, height } = data[0]
-          // console.log(res)
-          console.log(url)
-          var img = document.getElementById('img')
-          img.src = url
-          img.style.width = width
-          img.style.height = height
-        } catch (error) {
-          console.log(error.message)
-        }
-      }).fail(error => {
-        console.log(error)
-      })
-    }
-    getImg('/api/random')
-    document.getElementById('btn').addEventListener('click', function () {
+          try {
+            const { data = [] } = res
+            const { url, width, height } = data[0]
+            // console.log(res)
+            console.log(url)
+            var img = document.getElementById('img')
+            img.src = url
+            img.style.width = width
+            img.style.height = height
+          } catch (error) {
+            console.log(error.message)
+          }
+        }).fail(error => {
+          console.log(error)
+        })
+      }
       getImg('/api/random')
-    })
-    document.getElementById('btn2').addEventListener('click', function () {
-      getPixiv()
-    })
+      document.getElementById('img').onload = function () {
+        layer.closeAll()
+      }
+      document.getElementById('btn').addEventListener('click', function () {
+        layer.open({
+          type: 3
+        });
+        getImg('/api/random').then(() => {
+          // layer.closeAll()
+        })
+      })
+      document.getElementById('btn2').addEventListener('click', function () {
+        layer.open({
+          type: 3
+        });
+        getPixiv().then(() => {
+          // layer.closeAll()
+        })
+      })
+    })()
+    // function fn () {
+    //   return $.ajax({
+    //     url: 'http://jsonplaceholder.typicode.com/posts',
+    //     type: 'get',
+    //     dataType: 'json'
+    //   }).done(res => {
+    //     console.log(res)
+    //   }).fail(error => {
+    //     console.log(error)
+    //   })
+    // }
+    // function fn1 () {
+    //   fn().done((res) => {
+    //     console.log(111, res)
+    //   })
+    // }
+    // fn1()
   </script>
 </body>
 
