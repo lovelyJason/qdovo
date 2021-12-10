@@ -25,3 +25,7 @@
     - name: 加需求
       icon: iconfont icon-jiacu
       url: /needs
+    - name: book
+      icon: iconfont icon-jiacu
+      url: /book
+      target: _blank
