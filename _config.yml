@@ -135,7 +135,8 @@ theme_config:
         icon: fas fa-fan fa-spin
         url: /contributors/
   navbar:
-    logo: null
+    logo:
+      img: http://cdn.qdovo.com/uploads/2021/12/10/logo-transparent.png
     search: 世界之大,我需要探索...
   # 小部件
   widget:

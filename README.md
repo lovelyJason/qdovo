@@ -1,14 +1,19 @@
 # hexo使用事项
 
-## 项目搭建
+## 项目搭建和运行
 
 1. 使用hexo-cli
 2. 克隆hexo主题的单元测试项目
   开发主题时,选择此方式,因为单元测试库包括了所有边缘情况,而不是开发完再去测试
+3. 开发环境: node v10.16.3
+4. 下载子模块
+```bash
+git submodule update --init --recursive
+```
 
 ## 数据交互
 
-数据提供：主题配置 Front-mater >>> theme._config  >>> _config.theme_config
+数据提供：主题配置 Front-mater >>> ._config（自定义config）  >>> theme_config._config
 
 Font-matter中自定义属性不生效，其他可以
 
