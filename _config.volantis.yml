@@ -1,0 +1,119 @@
+cover:
+  logo: null
+  height_scheme: full # full, half
+  layout_scheme: dock # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
+  display:
+    home: false
+    archive: true
+    others: false # can be written in front-matter 'cover: true'
+  features:
+    - name: 文档
+      icon: fas fa-book
+      url: /v3/getting-started/
+    - name: 帮助
+      icon: fas fa-question-circle
+      url: faqs/
+    - name: 示例
+      icon: fas fa-play-circle
+      url: /examples/
+    - name: 社区
+      icon: fas fa-fan fa-spin
+      url: /contributors/
+navbar:
+  logo:
+    img: http://cdn.qdovo.com/uploads/2021/12/10/logo-transparent.png
+  search: 世界之大,我需要探索...
+  menu:
+    - name: 首页
+      icon: iconfont icon-fangzi
+      url: /
+    - name: 分类
+      icon: iconfont icon-ziyuan
+      url: categories/
+    - name: 标签
+      icon: iconfont icon-biaoqian
+      url: tags/
+    - name: 归档
+      icon: iconfont icon-nav_wodeguidang
+      url: archives/
+    - name: 友链
+      icon: iconfont icon-lianjie
+      url: friends/
+    - name: 关于
+      icon: iconfont icon-about
+      url: about/
+    - name: 工具
+      icon: iconfont icon-jiacu
+      rows:
+        - name: OCR图片识别
+          icon: iconfont icon-jiacu
+          url: /tool
+        - name: 二次元图库
+          icon: iconfont icon-jiacu
+          url: /erciyuan
+        - name: 小霸王游戏
+          icon: iconfont icon-jiacu
+          url: /game
+    - name: 更多
+      icon: iconfont icon-19
+      rows:
+        - name: 小站历程
+          icon: iconfont icon-fenlei-lishicopy
+          url: /history
+        - name: 加需求
+          icon: iconfont icon-jiacu
+          url: /needs
+        - name: book
+          icon: iconfont icon-jiacu
+          url: /book
+          target: _blank
+############################### Sidebar ############################### > start
+sidebar:
+  # 侧边栏组件库
+  widget_library:
+    # ---------------------------------------
+    # blogger info widget
+    blogger:
+      avatar: https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/timg.jpeg
+############################### Sidebar ############################### > end
+
+article:
+  body:
+    meta_library:
+      # 默认文章作者（可在 _data/author.yaml 中增加其他作者，并在 front-matter 中设置）
+      # https://volantis.js.org/advanced-settings/#多人协同
+      author:
+        avatar: https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/timg.jpeg
+        name: jasonhuang
+        url: /
+
+plugins:
+  comment_typing: false
+  # backstretch:
+  # #   enable: false
+  #   position: fixed
+  #   images:             # For personal use only. At your own risk if used for commercial purposes !!!
+  #     - https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/scenic/4456776-3705836a00587303.jpeg
+  parallax:
+    enable: true
+    position: fixed       # cover: sticky on the cover.   fixed: Fixed as background for the site.
+    shuffle: true         # shuffle playlist
+    duration: 10000       # Duration (ms)
+    fade: 1500            # fade duration (ms) (Not more than 1500)
+    images:               # For personal use only. At your own risk if used for commercial purposes !!!
+      - https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/scenic/4456776-3705836a00587303.jpeg
+      - https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/scenic/4456776-3705836a00587303.jpeg
+  aplayer:
+    enable: false
+  highlightjs:
+    css: https://cdn.jsdelivr.net/npm/highlight.js@10.1.1/styles/ocean.css
+  # 生成rss
+  hexo-generator-feed:
+
+pages:
+  # 友链页面配置
+  friends:
+    layout_scheme: traditional # simple: 简单布局, traditional: 传统布局
+
+rightmenu:
+  enable: false
