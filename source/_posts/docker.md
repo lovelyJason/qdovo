@@ -1,6 +1,8 @@
-#  1.docker环境搭建
-
-## 1.1 Virtual Box && Vagrant安装虚拟机
+---
+title: docker使用指南
+---
+##  1.docker环境搭
+### 1.1 Virtual Box && Vagrant安装虚拟机
 
 **vagrant**命令创建虚机
 
@@ -44,7 +46,7 @@ vagrant scp 本地目录 主机名:目录
 2. 可从Vagrant Cloud寻找vagrantfile配置使用
 3. 可在vagrantfile末尾添加shell脚本,vagrant up之后会自动执行
 
-## 1.2 Centos上安装Docker
+### 1.2 Centos上安装Docker
 
 [docker官网]: https://docs.docker.com/install/linux/docker-ce/centos/
 
@@ -99,13 +101,13 @@ sudo yum remove docker \
    # 本地没有镜像时会从docker hub下载
    sudo docker run hello-world
    ```
-```
+
    
 看到一长串的黑客帝国一样的代码输出了Hello from Docker恭喜你,安装成功,可以开心使用了
    
    
 
-## 1.3 Docker Machine本地使用
+### 1.3 Docker Machine本地使用
 
 自动在虚拟机安装docker-engine的工具,mac版本会自动下载
 
@@ -116,35 +118,35 @@ sudo yum remove docker \
 ​```bash
 docker-machine version
 
-# 创建linux虚机demo
+#### 创建linux虚机demo
 docker-machine create demo
 
-# 列出当前已创建好的machine
+#### 列出当前已创建好的machine
 docker-mechine ls
 
-# 进入虚机 查看docker版本
+#### 进入虚机 查看docker版本
 docker-machine ssh demo
 docker version
 
-# 停掉虚机
+#### 停掉虚机
 docker-machine stop demo
 
-# 查看demo的环境变量 (通过本地docker远程管理docker-machine)
+#### 查看demo的环境变量 (通过本地docker远程管理docker-machine)
 docker-machine env demo
 
-# 加载环境变量
+#### 加载环境变量
 eval $(docker-machine env demo)
-```
-
-## 1.4 Docker Playground
+### 1.4 Docker Playground
 
 直接使用安装好了docker的环境
 
-# 2.Docker镜像&容器
+免费使用: https://labs.play-with-docker.com/
+
+## 2.Docker镜像&容器
 
 [docker命令](http://www.imooc.com/article/292859#Registry%E5%AE%9E%E8%B7%B5)
 
-## 2.1 Docker架构
+### 2.1 Docker架构
 
 Docker Engine:
 
@@ -154,7 +156,7 @@ Docker Engine:
 
 - CLI接口(docker)
 
-![](medias/img_0037.png)
+![](http://cdn.qdovo.com/uploads/2021/12/18/img_0037.png)
 
 **底层技术支持(linux已存在的技术)**
 
@@ -164,7 +166,7 @@ Control groups: 资源限制
 
 Union file systems: Container和image的分层
 
-## 2.2 Docker Image
+### 2.2 Docker Image
 
 文件和meta data的集合(root filesystem)
 
@@ -174,7 +176,7 @@ Union file systems: Container和image的分层
 
 Image只读
 
-![](medias/img_0039.jpg)
+![](http://cdn.qdovo.com/uploads/2021/12/18/img_0039.jpg)
 
 **常用命令**
 
@@ -197,7 +199,7 @@ docker rmi --force `docker images | grep doss-api | awk '{print $3}'`
 docker (container) run 镜像REPOSITORY
 ```
 
-## 2.3 Image的获取
+### 2.3 Image的获取
 
 1. Build from Dockerfile
 
@@ -221,7 +223,7 @@ sudo service docker restart
 # 要重启ssh
 ```
 
-## 2.4 Container
+### 2.4 Container
 
 通过Image创建
 
@@ -281,7 +283,7 @@ Loaded plugins: fastestmirror
 You need to be root to perform this command
 ```
 
-## 2.5 构建镜像的方式
+### 2.5 构建镜像的方式
 
 - docker commit	从容器的改变创建镜像(不推荐使用)
 
@@ -298,7 +300,7 @@ docker build -t [NAME][:TAG] .
 # 点表示基于当前目录的Dockerfile进行build,本身image是只读的,执行yum install等读写的原理是临时生成容器commit成镜像,再删除临时容器
 ```
 
-## 2.6 Dockerfile语法
+### 2.6 Dockerfile语法
 
 **FROM**
 
@@ -353,7 +355,7 @@ ENV MYSQL_VERSION 5.6
 
 官方Dockerfile: github.com/docker-library
 
-### tips
+#### tips
 
 1.用WORKDIR 不要用 RUN cd
 
@@ -361,9 +363,9 @@ ENV MYSQL_VERSION 5.6
 
 3.ADD/COPY如果添加/拷贝的是文件夹,只会添加/拷贝文件夹里的内容
 
-## 2.7 RUN vs CMD vs ENTERPOINT
+### 2.7 RUN vs CMD vs ENTERPOINT
 
-![](medias/img_0050.png)
+![](http://cdn.qdovo.com/uploads/2021/12/18/img_0050.png)
 
 通过Exec格式,并不是在shell执行echo,只是单纯执行echo,需要指明要运行的命令是通过shell运行
 
@@ -412,11 +414,11 @@ RUN apt-get install -y vim
 RUN ["apt-get","install","-y","vim"]
 ```
 
-### tips
+#### tips
 
 添加远程文件/目录使用curl或者wget
 
-## 2.8 镜像的发布
+### 2.8 镜像的发布
 
 注意: push的镜像NAME[:TAG]必须是docker hub id/名称
 
@@ -433,7 +435,7 @@ telnet ip port
 
 注意: 没有冒号
 
-## 2.9 容器的操作
+### 2.9 容器的操作
 
 ```bash
 # 运行容器参数,name也是唯一标识,可通过image或name进行容器操作
@@ -458,13 +460,13 @@ docker inspect [容器id]
 docker logs [container id]
 ```
 
-## 2.10对容器进行资源限制
+### 2.10对容器进行资源限制
 
 ```bash
 docker run [参数,如memory]
 ```
 
-## 2.11 docker machine
+### 2.11 docker machine
 
 在虚拟机(可以是远程的)上安装docker的工具,且可以管理docker主机
 
@@ -495,7 +497,7 @@ telnet: 验证服务可用性
 talnet 172.17.0.2 80
 ```
 
-# 3. Docker Network
+## 3. Docker Network
 
 容器联网的原理:
 
@@ -520,7 +522,7 @@ docker0这个bridge的network namespace是虚拟机本机的network namespace
 ip a
 ```
 
-![](medias/img_0052.png)
+![](http://cdn.qdovo.com/uploads/2021/12/18/img_0052.png)
 
 ```bash
 # 列举当前机器的网络: bridge host none,对应的drive分别为bridge, host, null
@@ -541,9 +543,9 @@ docker connect my-bridge test
 
 两个network namespace通过一对veth pair连接到docker0相互通信(容器默认的bridge)
 
-![](medias/img_0051.jpg)
+![](http://cdn.qdovo.com/uploads/2021/12/18/img_0051.jpg)
 
-# 4. Docker的持久化存储
+## 4. Docker的持久化存储
 
 1.基于本地文件系统的Volume,通过-v参数将主机目录作为容器的数据卷
 
@@ -573,7 +575,7 @@ docker volume inspect [VOLUME NAME](默认是一串字母数字)
 
 
 
-# 5. Docker Compose
+## 5. Docker Compose
 
 通过yaml配置文件管理多个docker容器组成的应用的命令行工具
 
@@ -658,7 +660,7 @@ networks:
     driver: bridge
 ```
 
-# 6.Docker Swarm
+## 6.Docker Swarm
 
 ```bash
 #初始化manage
@@ -696,13 +698,13 @@ docker service creat --name mysql ... --network demo --mount type=volume,source=
 nslookup tasks.whoami
 ```
 
-## 6.1 集群服务间通信之routing mesh
+### 6.1 集群服务间通信之routing mesh
 
 Internal
 
 Ingress
 
-# 7.kubernetes
+## 7.kubernetes
 
 Master节点 和 Node节点
 
@@ -710,15 +712,10 @@ pod: 具有相同namespace(主要是network namespace)的container的组合
 
 kubectl context: cli连接apiserver的配置信息
 
-## kubrnets架构
-
-
+### kubrnets架构
 
 ![image-20200531135038253](/Users/jasonhuang/Library/Application Support/typora-user-images/image-20200531135038253.png)
-
-
-
-## 环境搭建
+### 环境搭建
 
 1.minikube
 
@@ -747,7 +744,7 @@ minikube delete，# 删除虚拟机,start失败时执行此命令
 
 2.kubeadm
 
-## 常用命令
+### 常用命令
 
 ```bash
 # 获取contexts列表,返回的namespace默认为空，即default
@@ -780,13 +777,13 @@ kubectl label node [node name] env-
 kubectl describe node [node name]
 ```
 
-## k8s最小调度单位Pod
+### k8s最小调度单位Pod
 
 一个pod可以包含多个container,共享一个namespace,包括用户,网络,存储等,以及物理资源。之间的通信直接走localhost
 
 ![image-20200530222754313](/Users/jasonhuang/Library/Application Support/typora-user-images/image-20200530222754313.png)
 
-### 操作pod常用命令
+#### 操作pod常用命令
 
 ```bash
 # 根据yml文件中定义的类型创建相应的resource
@@ -810,7 +807,7 @@ kubectl exec -it [pod name] sh
 kubectl logs [pod name]
 ```
 
-### pod的定义
+#### pod的定义
 
 ```yaml
 apiVersion: v1
@@ -832,7 +829,6 @@ spec:			# 一个pod
 ```
 
 ### Namespace命名空间
-
 - ###### 不同命名空间中可以有相同名称的pod存在
 
 ```bash
@@ -843,7 +839,7 @@ $ kubectl get namespace
 $ kubectl create namespace [name]
 ```
 
-#  8.Deployment
+##  8.Deployment
 
 部署无状态应用
 
@@ -896,7 +892,7 @@ update deployment的方法
 
 
 
-# 9.容器监控
+## 9.容器监控
 
 ```bash
 # 查看容器的进程信息

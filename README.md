@@ -5,7 +5,7 @@
 1. 使用hexo-cli
 2. 克隆hexo主题的单元测试项目
   开发主题时,选择此方式,因为单元测试库包括了所有边缘情况,而不是开发完再去测试
-3. 开发环境: node v10.16.3
+3. 开发环境: node v12.16.3
 4. 下载子模块
 ```bash
 git submodule update --init --recursive
@@ -13,7 +13,7 @@ git submodule update --init --recursive
 
 ## 数据交互
 
-数据提供：主题配置 Front-mater >>> ._config（自定义config）  >>> theme_config._config
+数据提供：主题配置 Front-mater >>> config.theme_config(项目配置_config.yml中的theme_config属性) >>> _config.[theme].yml(Hexo 5.0.0 起提供) >>> 主题目录下的 _config.yml 文件
 
 Font-matter中自定义属性不生效，其他可以
 

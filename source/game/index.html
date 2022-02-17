@@ -1,0 +1,195 @@
+---
+layout: false
+---
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="full-screen" content="yes">
+    <meta name="browsermode" content="application">
+    <meta name="x5-orientation" content="landscape">
+    <meta name="x5-fullscreen" content="true">
+    <meta name="x5-page-mode" content="app">
+    <title>📍在线玩小霸王游戏机</title>
+    <meta name="keywords" content="c在线玩,fc游戏在线玩,fc在线模拟器,nes在线模拟器,魂斗罗,超级玛丽,忍者龙剑传">
+    <meta name="description" content="可在手机电脑上在线玩fc游戏的网站,近乎完美的还原任天堂FC/NES原版ROM游戏的视频和声音。">
+    <link href="css/jsnes.css" rel="stylesheet" type="text/css">
+    <link rel="shortcut icon" href="favicon.ico">
+  </head>
+
+  <body>
+    <audio style="display:none; height: 0" id="bg-music" preload="auto"
+      src="https://res.wx.qq.com/voice/getvoice?mediaid=MzU5NTY5MjkzMF8xMDAwMDAzNjg="></audio>
+    <div class="main">
+      <div class="panel">
+        <div class="controller-area">
+          <div class="controller">
+            <div id="controls-direction">
+              <button role="BUTTON_UP" class="up joydirection" id="joystick_btn_up">up</button>
+              <button role="BUTTON_RIGHT" class="right joydirection" id="joystick_btn_right">right</button>
+              <button role="BUTTON_DOWN" class="down joydirection" id="joystick_btn_down">down</button>
+              <button role="BUTTON_LEFT" class="left joydirection" id="joystick_btn_left">left</button>
+            </div>
+          </div>
+          <div class="joy">I</div>
+          <div><a href="https://mp.weixin.qq.com/s/sYxc2zbhYE9_3RdbfVQ77g" target="_blank" class="readme">按键说明</a>
+          </div>
+        </div>
+        <div class="function-area">
+          <div class="screen">
+            <div id="emulator" align="center" style="width:100%;/*height:100%*/"></div>
+          </div>
+          <div class="function">
+            <button class="controls-center-select joybtn" id="joystick_btn_select" role="BUTTON_SELECT">选择</button>
+            <button class="controls-center-start joybtn" id="joystick_btn_start" role="BUTTON_START">开始</button>
+          </div>
+        </div>
+        <div class="action-area">
+          <div class="action">
+            <div id="controls-fire">
+              <button class="a joybtn" role="BUTTON_A" id="joystick_btn_A">A</button>
+              <button class="b joybtn" role="BUTTON_B" id="joystick_btn_B">B</button>
+            </div>
+          </div>
+        </div>
+        <div class="sign">FAMILY <br> COMPUTER</div>
+      </div>
+    </div>
+  </body>
+  <script src="./js/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/dynamicaudio-min.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/nes.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/utils.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/cpu.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/keyboard.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/mappers.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/papu.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/ppu.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/rom.js" type="text/javascript" charset="utf-8"></script>
+  <script src="./js/ui.js" type="text/javascript" charset="utf-8"></script>
+  <script type="text/javascript" charset="utf-8">
+    var _0xode = 'jsjiami.com.v6', _0x5292 = [_0xode, 'w4gRbcK6RcK0YcOyDkTDgQPCn1nDv8Onw4/DiMKFSyouw53CnMOTU2TCq01RHcKsBsKAwokCShoiXnV3', '5YeG6Zis5bOu', 'J8OCGWzDkVVXXcK6wpl8w5zCv8KhwrjDn8Odw4dq', '6a+L5pWT572I', 'w4bCiVVnPXwRw5LDqGRZwoc=', '5LqY5Zup6LCF5qOI', 'L8Oxw5rClcOswo0Tw50ODcK+wq5bw7hZO8Kdwo3DncKGw6TDncOxw5zDqcOHMA==', '5Zys5YSH5aai5omi', 'CcKjIBkfwpgFwrt3N8OAfcOmEg==', 'J8OCGWzDkUBDV8KwwpVzwpzCtcKlwqQ=', 'wqbCjsK0w4pew7LDpsOKwp5sBcOww67Cug==', '6LWF5b2P5oii5aKG', '54Ok5b+Z5LuC', 'w7cKClzDgMObXik0dlE=', 'wrjCt8OQHi7DoQ7DlsKzwpZmKcObwpt8SgvDsMKGADJIw7w=', 'CcKjIBkfw4Quw7w8esK4IsKtUxrCkMKETUrDicOvcsK9XE0Xw6slwpYsZ8O9wobCiMOGwoUlw74=', '5Lq855u656qB5a2T', 'BMKkw7bClnBnQzxaw4sxB8Og', '5byO6IGX56eG6b25wpM=', '5r6h6b+r5b++5om/', 'w7fDpmgAwonDqsOjw4XCmxHDrgE=', 'J8OCGWzDkUBPWMOzw55zw5fCqA==', '5rKL572S5pie6JqK', 'c8OkZhh5w7jDqcO9w7UbG8Onw43DkcOXw67DpsK4PsOew7nDvhDDuU5vw6dmGsK4NGc0LTQUw4M=', 'wrQfVBJT', 'BMObOUXCig==', 'w63DocKODm4=', 'w6jDvMK/NnQ=', 'CMOSwr3DpcKP', 'KcKpw787aQ==', 'w4bCtcOGwrRF', 'LcOGEmjCrg==', 'w4VfJlPCqg==', 'wogpXwhw', 'wqfChcK0Pj8=', '6LaS6YaC5pCn5oqX', 'ScKxLSDClA==', 'woLCk29Kwpc=', 'w783UcOAVcKQw4/DsCzDmz88w5w=', '6amo5oq85Zq7', 'w64uZ8KkAA==', 'U1FXHnYowp7Ch0DCqMO7OCk=', '5rKK57yn5pmW6JiI', 'wrXCnhoVJcOESB/DuC/DusKnAxDCksKdw4IGJsOUwq1lwpg=', 'wrjDq8KMw4LDtA==', '5YyL5oub6b+uVA==', 'wrQzwpozw47DuTHCiMOiR8OtwpbDsRHCgcOXw4RCIMKgwocPwq4=', 'CicVwqjDlA==', '5oCN6a6Y5Z6DWw==', 'Uik5wpzDsA==', 'EcKOw7AebA==', '5Lmn6ZSo5Yar5Zin', 'w5wJZcKjEA==', 'bRzCtcKyRw==', 'w783UcOAVcKow4nCpmfCmzQq', 'L8K1HWTCvw==', 'Aj4QwoDDmQ==', '5rK95rCB6b+hGw==', 'w4bCiVVnPWQUw5DDtCRSwpHDoQ==', 'w7/Dp1Ikw4o=', 'cMOZwrU7BA==', 'w4LClkfCtkE=', 'esOnwo01EQ==', 'R1bCpAlO', 'w5l7BWfCk0fDmQ==', 'wq/Cs8KzPFU/wpBfw5tEwqTCqnxybMObwp7Dr14nw657w59lJMKIOcKUCHZEWR3CrEIPDsKkG3UMw6M=', 'w6XDtcKZHmDDiULDonxuGVXCqMKqaMKj', 'PMO6w5PCo8K1wrIVw4YsA8Otwp1Lw7kcEQ==', 'wrPChMKqw40Ew43DrMONwoV/WcOq', 'UUxfGzwNwovCpEDDoMO0KDbDqQ==', 'aSnDqA/CtzLDrMKZJQ==', 'jZsVjIxCZQixamYWnri.bbcoYm.v6==']; (function (_0x364875, _0x90572, _0x306dda) { var _0x3b57a8 = function (_0x157067, _0x478c50, _0xfbe7bd, _0x672a6a, _0x483636) { _0x478c50 = _0x478c50 >> 0x8, _0x483636 = 'po'; var _0x381437 = 'shift', _0x35d1c0 = 'push'; if (_0x478c50 < _0x157067) { while (--_0x157067) { _0x672a6a = _0x364875[_0x381437](); if (_0x478c50 === _0x157067) { _0x478c50 = _0x672a6a; _0xfbe7bd = _0x364875[_0x483636 + 'p'](); } else if (_0x478c50 && _0xfbe7bd['replace'](/[ZVIxCZQxYWnrbbY=]/g, '') === _0x478c50) { _0x364875[_0x35d1c0](_0x672a6a); } } _0x364875[_0x35d1c0](_0x364875[_0x381437]()); } return 0x88c90; }; return _0x3b57a8(++_0x90572, _0x306dda) >> _0x90572 ^ _0x306dda; }(_0x5292, 0x1a9, 0x1a900)); var _0x3ade = function (_0x1c9b72, _0x3567da) { _0x1c9b72 = ~~'0x'['concat'](_0x1c9b72); var _0x51c613 = _0x5292[_0x1c9b72]; if (_0x3ade['yhzAfQ'] === undefined) { (function () { var _0x11b163 = typeof window !== 'undefined' ? window : typeof process === 'object' && typeof require === 'function' && typeof global === 'object' ? global : this; var _0x429780 = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/='; _0x11b163['atob'] || (_0x11b163['atob'] = function (_0x11bd79) { var _0x5154ab = String(_0x11bd79)['replace'](/=+$/, ''); for (var _0x347aaf = 0x0, _0x1b405b, _0x221c56, _0x4a6bef = 0x0, _0xe0c66a = ''; _0x221c56 = _0x5154ab['charAt'](_0x4a6bef++); ~_0x221c56 && (_0x1b405b = _0x347aaf % 0x4 ? _0x1b405b * 0x40 + _0x221c56 : _0x221c56, _0x347aaf++ % 0x4) ? _0xe0c66a += String['fromCharCode'](0xff & _0x1b405b >> (-0x2 * _0x347aaf & 0x6)) : 0x0) { _0x221c56 = _0x429780['indexOf'](_0x221c56); } return _0xe0c66a; }); }()); var _0x424943 = function (_0x2d74ac, _0x3567da) { var _0x2e09a6 = [], _0x414740 = 0x0, _0x5b82b9, _0x578882 = '', _0x3a2ee6 = ''; _0x2d74ac = atob(_0x2d74ac); for (var _0x2d9bd5 = 0x0, _0x33cd7b = _0x2d74ac['length']; _0x2d9bd5 < _0x33cd7b; _0x2d9bd5++) { _0x3a2ee6 += '%' + ('00' + _0x2d74ac['charCodeAt'](_0x2d9bd5)['toString'](0x10))['slice'](-0x2); } _0x2d74ac = decodeURIComponent(_0x3a2ee6); for (var _0x2773e4 = 0x0; _0x2773e4 < 0x100; _0x2773e4++) { _0x2e09a6[_0x2773e4] = _0x2773e4; } for (_0x2773e4 = 0x0; _0x2773e4 < 0x100; _0x2773e4++) { _0x414740 = (_0x414740 + _0x2e09a6[_0x2773e4] + _0x3567da['charCodeAt'](_0x2773e4 % _0x3567da['length'])) % 0x100; _0x5b82b9 = _0x2e09a6[_0x2773e4]; _0x2e09a6[_0x2773e4] = _0x2e09a6[_0x414740]; _0x2e09a6[_0x414740] = _0x5b82b9; } _0x2773e4 = 0x0; _0x414740 = 0x0; for (var _0x157473 = 0x0; _0x157473 < _0x2d74ac['length']; _0x157473++) { _0x2773e4 = (_0x2773e4 + 0x1) % 0x100; _0x414740 = (_0x414740 + _0x2e09a6[_0x2773e4]) % 0x100; _0x5b82b9 = _0x2e09a6[_0x2773e4]; _0x2e09a6[_0x2773e4] = _0x2e09a6[_0x414740]; _0x2e09a6[_0x414740] = _0x5b82b9; _0x578882 += String['fromCharCode'](_0x2d74ac['charCodeAt'](_0x157473) ^ _0x2e09a6[(_0x2e09a6[_0x2773e4] + _0x2e09a6[_0x414740]) % 0x100]); } return _0x578882; }; _0x3ade['BkyRUR'] = _0x424943; _0x3ade['AZUOcg'] = {}; _0x3ade['yhzAfQ'] = !![]; } var _0x196394 = _0x3ade['AZUOcg'][_0x1c9b72]; if (_0x196394 === undefined) { if (_0x3ade['jWwLbd'] === undefined) { _0x3ade['jWwLbd'] = !![]; } _0x51c613 = _0x3ade['BkyRUR'](_0x51c613, _0x3567da); _0x3ade['AZUOcg'][_0x1c9b72] = _0x51c613; } else { _0x51c613 = _0x196394; } return _0x51c613; }; var nes; $(function () { var _0x3c4221 = { 'LuxqQ': function (_0xa39d00, _0x54ff22) { return _0xa39d00(_0x54ff22); }, 'QvMZt': _0x3ade('0', 'JN#f'), 'ipsUx': '超级玛丽', 'kSGQC': _0x3ade('1', 'tTmm'), 'lmBmb': _0x3ade('2', 'Z#*w'), 'TOEVb': _0x3ade('3', 'yfQX'), 'ZJYgL': _0x3ade('4', 'hd5K'), 'FWtGL': _0x3ade('5', '5)jI'), 'BjJzG': _0x3ade('6', 'xgGc'), 'xkfwP': _0x3ade('7', 'pGWU'), 'pKBPk': _0x3ade('8', 'JN#f'), 'pCskr': _0x3ade('9', 'hKm('), 'HRGbz': '雪人兄弟', 'zYjqE': _0x3ade('a', 'yfQX'), 'wpwTh': _0x3ade('b', 'nU2o'), 'Havwe': _0x3ade('c', 'pKnG'), 'AvCDh': _0x3ade('d', '&xSc'), 'TPgmj': _0x3ade('e', 'Sl^]'), 'LZeMl': _0x3ade('f', 'QSjz'), 'DufjO': _0x3ade('10', 'hKm('), 'qAldK': _0x3ade('11', 'xgGc'), 'JitCN': 'roms/3.nes', 'JewSa': '洛克人1', 'bmVBI': 'roms/lkr.nes', 'fwejz': _0x3ade('12', 'AXKV'), 'ResOl': _0x3ade('13', 'mZcc'), 'sUeMi': _0x3ade('14', 'm4f1'), 'yXiLF': _0x3ade('15', 'H%wy'), 'znWWl': '西游记1', 'GwMwO': _0x3ade('16', 'yfQX'), 'XlMxM': _0x3ade('17', 'XV%p'), 'ExjwR': 'roms/Lifeforce\x20(U).nes', 'MIuyZ': '淘金者', 'USFDD': _0x3ade('18', 'M7uQ') }; nes = new JSNES({ 'ui': _0x3c4221[_0x3ade('19', '7mqY')]($, _0x3c4221[_0x3ade('1a', 'yfQX')])['JSNESUI']({ '经典': [[_0x3c4221[_0x3ade('1b', 'FbqG')], _0x3c4221['kSGQC']], [_0x3c4221[_0x3ade('1c', 'FbqG')], _0x3c4221[_0x3ade('1d', 'OVI*')]], [_0x3c4221[_0x3ade('1e', '9Q1O')], _0x3c4221[_0x3ade('1f', '9Op3')]], [_0x3c4221['BjJzG'], _0x3c4221[_0x3ade('20', 'yfQX')]], [_0x3c4221[_0x3ade('21', 'xgGc')], _0x3c4221[_0x3ade('22', '7mqY')]], [_0x3c4221['HRGbz'], _0x3c4221[_0x3ade('23', 'XrRW')]], [_0x3ade('24', 'xWfm'), _0x3c4221[_0x3ade('25', 'q9Op')]], [_0x3c4221[_0x3ade('26', 'QYWQ')], _0x3ade('27', '8uz]')], [_0x3c4221['AvCDh'], 'roms/zhadan.nes'], [_0x3ade('28', 'eKsC'), _0x3c4221[_0x3ade('29', 'tTmm')]], ['影子传说', _0x3ade('2a', 'pKnG')], [_0x3ade('2b', '*I90'), _0x3c4221['LZeMl']], ['脱狱', _0x3ade('2c', 'OOWj')], ['功夫', _0x3c4221[_0x3ade('2d', 'yhTW')]], [_0x3ade('2e', 'OOWj'), _0x3ade('2f', 'V0*&')], [_0x3c4221[_0x3ade('30', 'O74X')], _0x3c4221['JitCN']], [_0x3ade('31', 'hKm('), 'roms/emc.nes'], [_0x3c4221[_0x3ade('32', 'xWfm')], _0x3c4221[_0x3ade('33', '9Q1O')]], [_0x3ade('34', 'XrRW'), _0x3c4221[_0x3ade('35', 'tTmm')]], [_0x3c4221[_0x3ade('36', 'F&h8')], _0x3ade('37', '8uz]')], [_0x3c4221[_0x3ade('38', '&xSc')], _0x3c4221[_0x3ade('39', 'O74X')]], [_0x3ade('3a', '&xSc'), _0x3ade('3b', '5)jI')], [_0x3c4221[_0x3ade('3c', 'H%wy')], _0x3c4221[_0x3ade('3d', '8H!K')]], [_0x3c4221[_0x3ade('3e', 'vNRr')], _0x3c4221['ExjwR']], [_0x3c4221[_0x3ade('3f', '8H!K')], _0x3c4221[_0x3ade('40', 'XV%p')]]], '游戏来自于': [] }) }); nes['ui'][_0x3ade('41', 'xgGc')](_0x3ade('42', 'XrRW')); }); document['body'][_0x3ade('43', 'FbqG')]('touchmove', function (_0x490cf5) { _0x490cf5['preventDefault'](); }, ![]); document[_0x3ade('44', 'pGWU')](_0x3ade('45', 'nU2o'), function (_0xd9fbc0) { _0xd9fbc0[_0x3ade('46', 'pKnG')](); });; _0xode = 'jsjiami.com.v6';
+  </script>
+
+  <script>
+    //音乐自动播放
+    $(document).ready(function () {
+      autoPlayMusic();
+      audioAutoPlay();
+    });
+    function audioAutoPlay() {
+      var audio = document.getElementById('bg-music');
+      audio.play();
+      document.addEventListener("WeixinJSBridgeReady", function () {
+        audio.play();
+      }, false);
+    }
+    // 音乐播放
+    function autoPlayMusic() {
+      // 自动播放音乐效果，解决浏览器或者APP自动播放问题
+      function musicInBrowserHandler() {
+        musicPlay(true);
+        document.body.removeEventListener('touchstart', musicInBrowserHandler);
+      }
+      document.body.addEventListener('touchstart', musicInBrowserHandler);
+      // 自动播放音乐效果，解决微信自动播放问题
+      function musicInWeixinHandler() {
+        musicPlay(true);
+        document.addEventListener("WeixinJSBridgeReady", function () {
+          musicPlay(true);
+        }, false);
+        document.removeEventListener('DOMContentLoaded', musicInWeixinHandler);
+      }
+      document.addEventListener('DOMContentLoaded', musicInWeixinHandler);
+    }
+    function musicPlay(isPlay) {
+      var media = document.querySelector('#bg-music');
+      if (isPlay && media.paused) {
+        media.play();
+      }
+      if (!isPlay && !media.paused) {
+        media.pause();
+      }
+    }
+  </script>
+  <script src="https://res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+
+  <script>
+    var url = location.href;
+
+    $.ajax({
+      type: "get",
+      // url: "/jssdk.php?url=" + url,
+      url: "https://game.ruikeweike.club/jssdk.php?url=https://game.ruikeweike.club/?sandianjila=",
+      dataType: "jsonp",
+      jsonp: "callback",
+      jsonpCallback: "success_jsonpCallback",
+      success: function (data) {
+
+        wx.config({
+          debug: false,
+          appId: data.appId,
+          timestamp: data.timestamp,
+          nonceStr: data.nonceStr,
+          signature: data.signature,
+          jsApiList: [
+            'onMenuShareTimeline',//
+            'onMenuShareAppMessage',
+            'onMenuShareQQ',
+            'onMenuShareWeibo',
+            'onMenuShareQZone'
+
+          ]
+        });
+      },
+      error: function (data) {
+        alert("连接失败！");
+      }
+    });
+
+    wx.ready(function () {
+      var shareData = {
+        title: '在线小霸王游戏机，1秒找回童年',
+        desc: '超级玛丽，魂斗罗，淘金者，冒险岛！80,90一代人的回忆',
+        link: url,
+        imgUrl: 'http://fc.ziyuanwu.com/logo1.png'
+      };
+
+      wx.onMenuShareAppMessage({
+        title: '少年未来可期！', // 分享标题
+        desc: '这个暑假，当少年遇上高尔夫，让自信与优秀成为一种习惯，倍享成长快乐！', // 分享描述
+        link: window.location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: "/logo.png", // 分享图标
+        type: '', // 分享类型,music、video或link，不填默认为link
+        dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+        success: function () {
+          // alert("成功")
+
+        }
+      });
+
+
+      wx.onMenuShareAppMessage(shareData);//分享给好友
+      wx.onMenuShareTimeline(shareData);//分享到朋友圈
+      wx.onMenuShareQQ(shareData);//分享给手机QQ
+      wx.onMenuShareWeibo(shareData);//分享腾讯微博
+      wx.onMenuShareQZone(shareData);//分享到QQ空间
+
+
+
+    });
+    wx.error(function (res) {
+      //alert(res.errMsg);//错误提示
+
+    });
+  </script>
+  <div style="display:none">
+    <script type="text/javascript" src="https://s22.cnzz.com/z_stat.php?id=1274882764&web_id=1274882764"></script>
+  </div>
+
+</html>
