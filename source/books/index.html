@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /*  */
+    .container {
+      /* height: 100vh;
+      width: 100vw;
+      max-height: 800px;
+      max-width: 1280px;
+      min-height: 600px;
+      min-width: 1000px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      margin: 0 auto; */
+    }
+
+    .border:hover {
+      border: 1px solid #fff;
+    }
+
+    .card {
+      height: 100%;
+      width: 100%;
+      background: #808080;
+      border-radius: 10px;
+      transition: background 0.8s;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 70px 63px -60px #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .border {
+      height: calc(100% - 10px);
+      width: calc(100% - 10px);
+      background: transparent;
+      border-radius: 10px;
+      transition: border 1s;
+      position: relative;
+    }
+
+    .border:hover {
+      border: 1px solid #fff;
+    }
+
+    .card0 {
+      background: url("https://i.pinimg.com/736x/8f/a0/51/8fa051251f5ac2d0b756027089fbffde--terry-o-neill-al-pacino.jpg") center center no-repeat;
+      background-size: 115px;
+    }
+
+    .card0:hover {
+      background: url("https://i.pinimg.com/736x/8f/a0/51/8fa051251f5ac2d0b756027089fbffde--terry-o-neill-al-pacino.jpg") left center no-repeat;
+      background-size: 230px;
+    }
+
+    .card0:hover h2 {
+      opacity: 1;
+    }
+
+    .card0:hover .fa {
+      opacity: 1;
+    }
+
+    .card1 {
+      background: url("https://i.pinimg.com/originals/28/d2/e6/28d2e684e7859a0dd17fbd0cea00f8a9.jpg") center center no-repeat;
+      background-size: 300px;
+    }
+
+    .card1:hover {
+      background: url("https://i.pinimg.com/originals/28/d2/e6/28d2e684e7859a0dd17fbd0cea00f8a9.jpg") left center no-repeat;
+      background-size: 600px;
+    }
+
+    .card1:hover h2 {
+      opacity: 1;
+    }
+
+    .card1:hover .fa {
+      opacity: 1;
+    }
+
+    .card2 {
+      background: url("https://i.pinimg.com/originals/ee/85/08/ee850842e68cfcf6e3943c048f45c6d1.jpg") center center no-repeat;
+      background-size: 300px;
+    }
+
+    .card2:hover {
+      background: url("https://i.pinimg.com/originals/ee/85/08/ee850842e68cfcf6e3943c048f45c6d1.jpg") left center no-repeat;
+      background-size: 600px;
+    }
+
+    .card2:hover h2 {
+      opacity: 1;
+    }
+
+    .card2:hover .fa {
+      opacity: 1;
+    }
+
+    h2 {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: #fff;
+      margin: 20px;
+      opacity: 0;
+      transition: opacity 1s;
+    }
+
+    .fa {
+      opacity: 0;
+      transition: opacity 1s;
+    }
+
+    .icons {
+      position: absolute;
+      fill: #fff;
+      color: #fff;
+      height: 130px;
+      top: 226px;
+      width: 50px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    .list-col li {
+      float: none;
+      display: inline-block;
+      *display: inline;
+      zoom: 1;
+      vertical-align: top
+    }
+
+    .carousel {
+      overflow: hidden;
+      position: relative;
+      height: 351px;
+      width: 675px
+    }
+
+    .carousel .title,
+    .carousel .author,
+    .carousel .publisher {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    .slide-item {
+      display: inline-block;
+      zoom: 1;
+      vertical-align: top;
+      width: 675px
+    }
+    .slide-item li {
+      width: 115px;
+      display: inline-block;
+    }
+
+    .section {
+      margin-bottom: 50px
+    }
+
+    .section .list-col5 {
+      font-size: 0;
+      margin: 0 -25px 0 0
+    }
+
+    .section .list-col5 li {
+      width: 115px;
+      margin: 0 25px 20px 0
+    }
+
+    .section .list-col5 .cover {
+      margin-bottom: 12px
+    }
+
+    .section .list-col5 .title {
+      font-size: 13px;
+      margin-bottom: 5px;
+      line-height: 1.1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      _width: 106px
+    }
+
+    .section .list-col5 .info {
+      margin: 0;
+      line-height: 1.2
+    }
+
+    h2 {
+      font-weight: bold;
+      padding-bottom: 3px;
+      margin-bottom: 16px;
+      border-bottom: 1px solid #ddd
+    }
+
+    h2 .link-more {
+      font: 13px Arial, Helvetica, sans-serif;
+      line-height: 150%;
+      color: #666666;
+      padding-left: 10px
+    }
+
+    .section h2 {
+      font-size: 18px
+    }
+
+    .more-meta {
+      display: none
+    }
+
+    .books-express {
+      margin-bottom: 65px
+    }
+
+    .books-express .hd h2 {
+      display: flex;
+      align-items: center
+    }
+
+    .books-express .hd h2 .tags {
+      flex: 1;
+      font-size: 13px;
+      color: #9B9B9B;
+      letter-spacing: 0;
+      font-weight: normal;
+      margin-left: 2px
+    }
+
+    .books-express .hd h2 .tags .item {
+      margin-left: 6px;
+      cursor: pointer
+    }
+
+    .books-express .hd h2 .tags .item.active {
+      color: #111111;
+      cursor: default
+    }
+
+    .books-express .slide-item {
+      width: 700px
+    }
+
+    .books-express .carousel {
+      height: 489px
+    }
+
+    .books-express .list-express li {
+      overflow: hidden;
+      margin: 0 25px 15px 0
+    }
+
+    .books-express .list-express .cover {
+      width: 115px;
+      height: 172px;
+      margin-bottom: 7px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .books-express .list-express .cover a {
+      display: flex;
+      height: 100%;
+      justify-content: center
+    }
+
+    .books-express .list-express .cover a:visited,
+    .books-express .list-express .cover a:hover,
+    .books-express .list-express .cover a:focus {
+      background-color: transparent
+    }
+
+    .books-express .list-express .cover img {
+      display: block;
+      max-width: 115px;
+      max-height: 172px;
+      align-self: flex-end
+    }
+    .books-express .list-express .info {
+      display: block;
+      width: 100%;
+      color: #666;
+      padding: 0 2px;
+      line-height: 1.2;
+    }
+    .books-express .list-express .info .title {
+      font-size: 14px;
+      margin-bottom: 6px;
+      line-height: 1.1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .books-express .list-express .info .title a {
+      color: #3377aa;
+    }
+
+    .books-express .list-express .info .author {
+      color: #333;
+      width: 102px;
+      font-size: 13px;
+      margin-bottom: 6px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container books-express">
+    <ul class="list-express slide-item list-col">
+      <li>
+        <div class="cover">
+          <div class="card card0">
+            <div class="border">
+              <h2>Al Pacino</h2>
+              <div class="icons">
+                <i class="fa fa-codepen" aria-hidden="true"></i>
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+                <i class="fa fa-dribbble" aria-hidden="true"></i>
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="info">
+          <div class="title">
+            <a href="https://book.douban.com/subject/35611304/?icn=index-latestbook-subject"
+              title="庭院深处，是哪辆镀铬把手的小自行车？">庭院深处，是哪辆镀铬把手的小自行车？</a>
+          </div>
+          <div class="author">
+            （法）乔治·佩雷克
+          </div>
+          <div class="more-meta">
+            <h4 class="title">
+              庭院深处，是哪辆镀铬把手的小自行车？
+            </h4>
+            <p>
+              <span class="author">
+                （法）乔治·佩雷克
+              </span>
+              /
+              <span class="year">
+                2022-1
+              </span>
+              /
+              <span class="publisher">
+                南京大学出版社
+              </span>
+            </p>
+            <p class="abstract">
+
+              编辑推荐
+              幽默荒诞 轻盈离奇 短小精悍
+              先锋叙述手法 精妙修辞技巧 挑战语言极限
+              ▼本书为法国著名先锋作家乔治·佩雷克的早期杰作，他后来作品中的许多特征在这部小说中初现端倪。这本小小的书，就仿佛一条隐秘小路，通向佩雷克错综复杂的语言丛林，以及乌力波那充满潜在可能性和无限创造力的艺术世界。
+              ▼本书情节似乎很简单：一名叫亨利•波拉克的年轻中士，每天骑着那辆...
+            </p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="cover">
+          <div class="card card0">
+            <div class="border">
+              <h2>Al Pacino</h2>
+              <div class="icons">
+                <i class="fa fa-codepen" aria-hidden="true"></i>
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+                <i class="fa fa-dribbble" aria-hidden="true"></i>
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="info">
+          <div class="title">
+            <a href="https://book.douban.com/subject/35611304/?icn=index-latestbook-subject"
+              title="庭院深处，是哪辆镀铬把手的小自行车？">庭院深处，是哪辆镀铬把手的小自行车？</a>
+          </div>
+          <div class="author">
+            （法）乔治·佩雷克
+          </div>
+          <div class="more-meta">
+            <h4 class="title">
+              庭院深处，是哪辆镀铬把手的小自行车？
+            </h4>
+            <p>
+              <span class="author">
+                （法）乔治·佩雷克
+              </span>
+              /
+              <span class="year">
+                2022-1
+              </span>
+              /
+              <span class="publisher">
+                南京大学出版社
+              </span>
+            </p>
+            <p class="abstract">
+
+              编辑推荐
+              幽默荒诞 轻盈离奇 短小精悍
+              先锋叙述手法 精妙修辞技巧 挑战语言极限
+              ▼本书为法国著名先锋作家乔治·佩雷克的早期杰作，他后来作品中的许多特征在这部小说中初现端倪。这本小小的书，就仿佛一条隐秘小路，通向佩雷克错综复杂的语言丛林，以及乌力波那充满潜在可能性和无限创造力的艺术世界。
+              ▼本书情节似乎很简单：一名叫亨利•波拉克的年轻中士，每天骑着那辆...
+            </p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="cover">
+          <div class="card card0">
+            <div class="border">
+              <h2>Al Pacino</h2>
+              <div class="icons">
+                <i class="fa fa-codepen" aria-hidden="true"></i>
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+                <i class="fa fa-dribbble" aria-hidden="true"></i>
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="info">
+          <div class="title">
+            <a href="https://book.douban.com/subject/35611304/?icn=index-latestbook-subject"
+              title="庭院深处，是哪辆镀铬把手的小自行车？">庭院深处，是哪辆镀铬把手的小自行车？</a>
+          </div>
+          <div class="author">
+            （法）乔治·佩雷克
+          </div>
+          <div class="more-meta">
+            <h4 class="title">
+              庭院深处，是哪辆镀铬把手的小自行车？
+            </h4>
+            <p>
+              <span class="author">
+                （法）乔治·佩雷克
+              </span>
+              /
+              <span class="year">
+                2022-1
+              </span>
+              /
+              <span class="publisher">
+                南京大学出版社
+              </span>
+            </p>
+            <p class="abstract">
+
+              编辑推荐
+              幽默荒诞 轻盈离奇 短小精悍
+              先锋叙述手法 精妙修辞技巧 挑战语言极限
+              ▼本书为法国著名先锋作家乔治·佩雷克的早期杰作，他后来作品中的许多特征在这部小说中初现端倪。这本小小的书，就仿佛一条隐秘小路，通向佩雷克错综复杂的语言丛林，以及乌力波那充满潜在可能性和无限创造力的艺术世界。
+              ▼本书情节似乎很简单：一名叫亨利•波拉克的年轻中士，每天骑着那辆...
+            </p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</body>
+
+</html>
