@@ -2,13 +2,17 @@
 title: vscode调试篇指南
 categories: 工具
 tags: [工具]
+date: 2022-9-10
+headimg: https://images.unsplash.com/photo-1680973543493-6c03e66402fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80
 ---
 
 分享一些在工作和生活当中很常见的些关于vscode调试的用法,让调试更方便
 
 <!-- more -->
 
-![](https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/表情包活动营销公众号推图@凡科快图.png)
+{% gallery %}
+![](https://cdn.qdovo.com/img/表情包活动营销公众号推图@凡科快图.png)
+{% endgallery %}
 
 新人首次发文哈,大佬勿喷,有错的敬请指正哈。分享一些在工作和生活当中很常见的些关于vscode调试的用法，尤其是在node端，vscode集成的调试工具就更有用武之地了，好了废话不多说，开始啦。
 
@@ -105,19 +109,19 @@ commander的具体使用就不再赘述了，主要是version, option, command, 
 
 ### 3.1 开启调试
 
-![Snipaste_2020-07-13_16-31-38](https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/173508be4b10c2ea.png)
-
-
+{% gallery %}
+![Snipaste_2020-07-13_16-31-38](https://cdn.qdovo.com/img/173508be4b10c2ea.png)
+{% endgallery %}
 
 mac下`⇧⌘D`可召唤出此面板，点击Run and Debug或者菜单栏/top bar的run下面的命令，之后vscode会有内置的环境的下拉列表提供选择，如node.js，如果您使用过react-native开发，也可以下载基于安卓和ios的调试插件`React Native Tools`，如果基于chrome调试前端应用，需要安装插件`Debugger for Chrome` 集成到vscode中来调试
 
 注意要在相应环境下的入口文件处（比如当前环境为node，但是要调试的文件为es module的文件，如jsx， vue这些是打不开调试的）打开才有效果， 也可以点击上面蓝色的字体“create a launch.json file”，之后就会在项目文件夹夹下自动创建.vscode/launch.json文件,并初始化预置内容。就是现在这个样子了
 
-![Snipaste_2020-07-13_16-42-47](https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/173508aa3875dd6e.png)
+![Snipaste_2020-07-13_16-42-47](https://cdn.qdovo.com/img/173508aa3875dd6e.png)
 
 然后，点击上图的RUN后面的蓝色箭头就可以开启调试了，这里的调试入口有三个地方，另外的两个就是软件的菜单栏的RUN，底部左边的状态条Launch Program都能顺利开启调试
 
-![Snipaste_2020-07-14_10-00-09](https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/173508b39934ee57.png)
+![Snipaste_2020-07-14_10-00-09](https://cdn.qdovo.com/img/173508b39934ee57.png)
 
 这时候，就能在你代码处的数字序号前单击添加断点，单击之后，会有个红色小圆点，代码走到该断点会停下来，这些用法就和chrome的开发工具的调试一样的道理了，但是有个问题，这个相当于执行node vue.js， 并不是像vue create app等，无法传递参数，接下来咱们分析下launch.json文件的配置了
 
@@ -143,7 +147,9 @@ mac下`⇧⌘D`可召唤出此面板，点击Run and Debug或者菜单栏/top ba
 
 然后，我们就可以设置args给vue命令传递参数了，如*"args"*: ["create", "demo"]，还不够，因为我们要和终端交互式输出，比如根据用户的输入，配置vue项目的一些选项，如eslint等，所以要把默认的调试控制台换成终端，这时候才能在debugger的时候在命令行输入指令或者作出其他反馈
 
-![Snipaste_2020-07-14_09-19-36](https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/173508c4389d3fcf.png)
+{% gallery %}
+![Snipaste_2020-07-14_09-19-36](https://cdn.qdovo.com/img/173508c4389d3fcf.png)
+{% endgallery %}
 
 ```json
 "console": "integratedTerminal"
@@ -180,7 +186,9 @@ Vscode 强大的调试工具允许你做更多个性化的设置,如同时调试
 
 ## 4. 调试行为
 
-![Snipaste_2020-07-13_17-24-53](https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/173508cad9cfb06c.png)
+{% gallery %}
+![Snipaste_2020-07-13_17-24-53](https://cdn.qdovo.com/img/173508cad9cfb06c.png)
+{% endgallery %}
 
 这些按钮功能同chrome开发工具的调试工具基本一致
 
@@ -224,7 +232,9 @@ https://cn.vuejs.org/v2/cookbook/debugging-in-vscode.html
 
 此时可以在vue文件中的script中的代码打上断点，template和style里打断点是不生效的,此时代码中的console信息就会在chrome调试工具和vscode的调试控制台同时显示
 
-![Snipaste_2020-07-15_10-36-39](https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/173508d35a437d52.png)
+{% gallery %}
+![Snipaste_2020-07-15_10-36-39](https://cdn.qdovo.com/img/173508d35a437d52.png)
+{% endgallery %}
 
 chrome下的blackbox，即黑盒。正常来说，调试前端应用的时候，逐行执行代码时，调试器时不时的跳到框架或库中去，这是个很头疼的事，所幸chrome提供了这样一个黑盒功能，帮助绕过框架或库的调试或者任何断点，让我们能更专注于自己代码。vscode中调试时设置*skipFiles*即可。
 

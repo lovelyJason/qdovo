@@ -1,0 +1,83 @@
+---
+title: 阅读书单
+top_meta: false
+bottom_meta: false
+---
+
+<div class="container books-express">
+  <h3>阅读计划</h3>
+  <div class="plan-containter">
+    <div class="columns">
+      <div class="columns-content">
+        <div class="column">
+          <div class="alert-hole">
+            <div class="alert info">
+              <p>5月~7月</p>
+              <div class="tli">
+                <div class="tli-i">✅</div>
+                <div class="tli-c">读完《你不知道的JavaScript》</div>
+              </div>
+              <div class="tli">
+                <div class="tli-i">⬜</div>
+                <div class="tli-c">
+                  <div class="next">读完《深入理解ES6》</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column">
+          <div class="alert-hole">
+            <div class="alert info color3">
+              <p>7月~9月</p>
+              <div class="tli">
+                <div class="tli-c"></div>
+              </div>
+              <div class="tli">
+                <div class="tli-i">✅</div>
+                <div class="tli-c">
+                  <div class="next">读完《小灰的漫画算法之旅》</div>
+                </div>
+              </div>
+              <div class="tli">
+                <div class="tli-i">⬜</div>
+                <div class="tli-c">
+                  <div class="next">读完《代码整洁之道》</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ul class="list-express slide-item list-col">
+    <% data.books.forEach(function(book){ %>
+      <li>
+        <div class="cover">
+          <div class="card card0" style="background-image: url('<%= book.image %>');">
+            <div class="border">
+              <div class="h2"><%= book.name %></div>
+              <div class="icons">
+                <i class="fa fa-codepen" aria-hidden="true"></i>
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+                <i class="fa fa-dribbble" aria-hidden="true"></i>
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="info">
+          <div class="title">
+            <a href="https://book.douban.com/subject/35611304/?icn=index-latestbook-subject"
+              title="<%= book.name %>"><%= book.name %></a>
+          </div>
+          <div class="author">
+            （<%= book.country %>）<%= book.author %>
+          </div>
+        </div>
+      </li>
+    <% }); %>
+  </ul>
+</div>

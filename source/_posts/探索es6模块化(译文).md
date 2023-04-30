@@ -1,5 +1,9 @@
 ---
 title: 探索es6模块化(译文)
+date: 2022-10-11
+categories: javascript
+headimg: https://cdn.qdovo.com/img/headimg/logo.png
+headimg-object-fit: fill
 ---
 
 ES6模块化详解

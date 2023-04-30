@@ -92,7 +92,7 @@ h3 {
   width: 200px;
   height: 200px;
   z-index: 999;
-  background: url('https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/61597333106_.pic.jpg') no-repeat;
+  background: url('https://cdn.qdovo.com/img/61597333106_.pic.jpg') no-repeat;
   background-position-y: -22px;
   background-size: 100% auto;
 }
@@ -784,18 +784,18 @@ portfolio .hover-bg > a {
   font-family: "Raleway", sans-serif;
 }
 #aboutme {
-  background: url(https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/tic-tac-toe.png);
+  background: url(https://cdn.qdovo.com/img/tic-tac-toe.png);
   background-color: #ededed;
   font-family: "Raleway", sans-serif;
 }
 #mywork {
-  background: url(https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/code-computer.png) no-repeat top center;
+  background: url(https://cdn.qdovo.com/img/code-computer.png) no-repeat top center;
   background-size: cover;
   /* background-color: #fff; */
   font-family: "Raleway", sans-serif;
 }
 #contactme {
-  background: url(https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/tic-tac-toe.png);
+  background: url(https://cdn.qdovo.com/img/tic-tac-toe.png);
   /* -webkit-background-size: cover; */
   /* -moz-background-size: cover;
   -o-background-size: cover;

@@ -1,0 +1,30 @@
+- name: 《JavaScript权威指南》
+  author: David Flanagan
+  image: /images/s5860151.jpg
+  country: 美
+- name: 《你不知道的JavaScript》
+  author: Kyle Simpson
+  image: https://img2.doubanio.com/view/subject/s/public/s28033372.jpg
+  country: 美
+- name: 《深入理解ES6》
+  author: Nicholas C. Zakas
+  image: /images/s29478358.jpg
+  country: 美
+- name: 《小灰的漫画算法之旅》
+  author: 魏梦舒
+  image: https://img2.doubanio.com/view/subject/s/public/s32299271.jpg
+  country: 中
+  
+- name: 《代码整洁之道》
+  author: Robert C. Martin
+  image: /images/s34476554.jpg
+  country: 美
+  
+- name: 《HTTP权威指南》
+  author: David Gourley / Brian Totty
+  image: /images/s11329547.jpg
+- name: 《JavaScript高级程序设计（第3版）》
+  author: Nicholas C. Zakas
+  image: /images/s8958650.jpg
+  country: 美
+  

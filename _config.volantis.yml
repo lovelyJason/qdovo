@@ -1,5 +1,7 @@
+############################### Cover ############################### > start
 cover:
   logo: null
+  title: qdovo
   height_scheme: full # full, half
   layout_scheme: dock # blank (留白), search (搜索), dock (坞), featured (精选), focus (焦点)
   display:
@@ -7,64 +9,77 @@ cover:
     archive: true
     others: false # can be written in front-matter 'cover: true'
   features:
-    - name: 文档
-      icon: fas fa-book
-      url: /v3/getting-started/
-    - name: 帮助
-      icon: fas fa-question-circle
-      url: faqs/
-    - name: 示例
-      icon: fas fa-play-circle
-      url: /examples/
-    - name: 社区
-      icon: fas fa-fan fa-spin
-      url: /contributors/
+    - name: 博客
+      icon: #
+      img: https://cdn.qdovo.com/icons/blog.svg
+      url: /
+############################### Cover ############################### > end
+
 navbar:
   logo:
-    img: http://cdn.qdovo.com/uploads/2021/12/10/logo-transparent.png
+    img: https://cdn.qdovo.com/assets/logo-transparent.png
   search: 世界之大,我需要探索...
+  # 他妈的好像menu数据文件没被使用到
   menu:
     - name: 首页
       icon: iconfont icon-fangzi
+      svg: icon-fangzi
       url: /
     - name: 分类
       icon: iconfont icon-ziyuan
       url: categories/
+      svg: icon-ziyuan
     - name: 标签
       icon: iconfont icon-biaoqian
+      svg: icon-biaoqian
       url: tags/
     - name: 归档
       icon: iconfont icon-nav_wodeguidang
+      svg: icon-nav_wodeguidang
       url: archives/
     - name: 友链
       icon: iconfont icon-lianjie
+      svg: icon-lianjie1
       url: friends/
+    - name: 书单
+      icon: fa fa-book
+      svg: icon-shudan
+      url: readingbooks/
     - name: 关于
       icon: iconfont icon-about
+      svg: icon-about
       url: about/
     - name: 工具
       icon: iconfont icon-jiacu
+      svg: icon-gongju
       rows:
         - name: OCR图片识别
           icon: iconfont icon-jiacu
+          svg: icon-1dataOCR
           url: /tool
         - name: 二次元图库
           icon: iconfont icon-jiacu
+          svg: icon-tuku
           url: /erciyuan
         - name: 小霸王游戏
           icon: iconfont icon-jiacu
+          svg: icon-fenlei-gedouyouxi
           url: /game
     - name: 更多
       icon: iconfont icon-19
+      svg: icon-more
       rows:
         - name: 小站历程
           icon: iconfont icon-fenlei-lishicopy
+          svg: icon-fenlei-lishicopy
           url: /history
         - name: 加需求
           icon: iconfont icon-jiacu
+          svg: icon-jiacu
           url: /needs
         - name: book
           icon: iconfont icon-jiacu
+          svg: icon-book
           url: /book
           target: _blank
 ############################### Sidebar ############################### > start
@@ -74,16 +89,52 @@ sidebar:
     # ---------------------------------------
     # blogger info widget
     blogger:
-      avatar: https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/timg.jpeg
+      avatar: https://cdn.qdovo.com/img/timg.jpeg
+      social:
+        - icon: fas fa-rss
+          url: /atom.xml
+        - icon: fas fa-envelope
+          url: mailto:jasonhuang56@163.com
+        - icon: fab fa-github
+          url: https://github.com/lovelyJason/
+        - icon: fas fa-headphones-alt
+          url: /
+    # category widget
+    category:
+      class: category
+      display: [desktop] # [desktop, mobile]
+      header:
+        icon: fas fa-folder-open
+        title: 文章分类
+        url: /categories/
+    # ---------------------------------------
+    # tagcloud widget
+    tagcloud:
+      class: tagcloud
+      display: [desktop, mobile] # [desktop, mobile]
+      header:
+        icon: fas fa-tags
+        title: 热门标签
+        url: /tags/
+      min_font: 14
+      max_font: 24
+      color: true
+      start_color: '#999'
+      end_color: '#555'
+    # ---------------------------------------
 ############################### Sidebar ############################### > end
 
 article:
+  # 列表预览
+  preview:
+    line_style: hidden
+    readmore: false
   body:
     meta_library:
       # 默认文章作者（可在 _data/author.yaml 中增加其他作者，并在 front-matter 中设置）
       # https://volantis.js.org/advanced-settings/#多人协同
       author:
-        avatar: https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/timg.jpeg
+        avatar: https://cdn.qdovo.com/img/timg.jpeg
         name: jasonhuang
         url: /
 
@@ -93,7 +144,7 @@ plugins:
   # #   enable: false
   #   position: fixed
   #   images:             # For personal use only. At your own risk if used for commercial purposes !!!
-  #     - https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/scenic/4456776-3705836a00587303.jpeg
+  #     - https://cdn.qdovo.com/scenic/4456776-3705836a00587303.jpeg
   parallax:
     enable: true
     position: fixed       # cover: sticky on the cover.   fixed: Fixed as background for the site.
@@ -101,12 +152,18 @@ plugins:
     duration: 10000       # Duration (ms)
     fade: 1500            # fade duration (ms) (Not more than 1500)
     images:               # For personal use only. At your own risk if used for commercial purposes !!!
-      - https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/scenic/4456776-3705836a00587303.jpeg
-      - https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/scenic/4456776-3705836a00587303.jpeg
+      # - https://cdn.qdovo.com/fonts/woman-walks-bridge.jpg
+      - https://cdn.qdovo.com/scenic/4456776-3705836a00587303.jpeg
   aplayer:
     enable: false
+  code_highlight: highlightjs
   highlightjs:
-    css: https://cdn.jsdelivr.net/npm/highlight.js@10.1.1/styles/ocean.css
+    copy_code: true
+    js: https://fastly.jsdelivr.net/gh/highlightjs/cdn-release@11.1.0/build/highlight.min.js
+    css: https://fastly.jsdelivr.net/npm/highlight.js@10.1.1/styles/ocean.css # https://unpkg.com/browse/@highlightjs/cdn-assets@11.7.0/styles/查看主题列表
+    # css: https://fastly.jsdelivr.net/npm/highlight.js@10.1.1/styles/monokai.css
+  globalJquery: true
+
   # 生成rss
   hexo-generator-feed:
 
@@ -117,3 +174,73 @@ pages:
 
 rightmenu:
   enable: false
+
+highlight:
+  enable: false
+
+comments:
+  title: <i class='fas fa-comments'></i> 用户交流区
+  # subtitle: 这里仅供用户之间进行交流，有任何疑问请前往GitHub提交Issue。在评论区进行提问将不会收到开发者的任何回复！
+  valine:
+    appId: I9b5AiKsmFxDd9nQAibzVAe3-gzGzoHsz
+    appKey: bFrvxEDJJJsEWvUtkHjE1fpJ
+    requiredFields: ['nick']
+    path: /
+    placeholder: 这里仅供用户之间进行交流！,
+    visitor: true
+
+############################### Color Scheme ############################### > start
+# 本博客主题色：#00a5f5
+color_scheme:
+  common:
+    theme: '#00a5f5'
+############################### Color Scheme ############################### > end
+
+############################### custom_css ############################### > start
+custom_css:
+  navbar:
+    effect: [pei-header]
+  sidebar:
+    effect: [blur]
+    # [shadow, floatable, blur]
+    # shadow：卡片阴影。
+    # floatable：当鼠标移动到容器内时，呈现出浮起来的效果。
+    # blur：背景模糊效果（毛玻璃），当浏览器不支持时显示为不透明。
+  body:
+    effect: [shadow, floatable] # [shadow, floatable, blur]
+  color:
+    site_footer: 'rgba(8,8,8,0.75)'
+    hljs_before_color: 'rgb(150, 162, 171)'
+  # 滚动条,有浏览器兼容性
+  scrollbar:
+    size: 12px
+    background: rgb(84,181,160) linear-gradient(315deg, rgba(236,183,183,0.9528186274509804) 25%, rgba(0,165,245,0.9556197478991597) 25%, rgba(74,141,161,1) 50%, rgba(0,165,245,0.9332107843137255) 50%, rgba(198,167,167,1) 75%, rgba(74,141,161,0.9500175070028011) 75%)
+    hover_background: linear-gradient(45deg, rgba(236,183,183,0.9528186274509804) 25%, rgba(0,165,245,0.9556197478991597) 25%, rgba(74,141,161,1) 50%, rgba(0,165,245,0.9332107843137255) 50%, rgba(198,167,167,1) 75%, rgba(74,141,161,0.9500175070028011) 75%)
+    border: 6px
+    color: '#2196f3'
+    hover: '#ff5722'
+  fontfamily:
+    bodyfont:
+      name: 'ZhuZiAWan'
+      url: https://cdn.qdovo.com/fonts/ZhuZiAWan2.woff2
+      fontfamily: 'ZhuZiAWan, "Varela Round", "PingFang SC", "Microsoft YaHei", Helvetica, Arial'
+  fontsize:
+    root: 17px
+############################### custom_css ############################### > start
+
+############################### footer ############################### > start
+site_footer:
+  layout: [aplayer, social, license, info, beian, copyright]
+  social:
+    - icon: fas fa-rss
+      url: atom.xml
+    - icon: fab fa-github
+      url: https://github.com/lovelyJason
+  copyright: '[Copyright © 2018-2020 Jason Huang](https://qdovo.com)'
+  beian: <a href="https://beian.miit.gov.cn">皖ICP备17007694号-3</a>
+############################### footer ############################### > end
+
+############################### injects ############################### > start
+# injects:
+#   first: [a.styl]
+############################### injects ############################### > end

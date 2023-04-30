@@ -7,6 +7,25 @@
   <title>吃饭睡觉打豆豆</title>
   <link rel="stylesheet" href="https://www.layuicdn.com/layui/css/layui.css">
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    div {
+      box-sizing: border-box;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+    }
+    .container {
+      width: 100%;
+      height: 100%;
+      /* padding-top: 200px; */
+      text-align: center;
+      /* background: url(/images/0072Vf1pgy1foxlned8v0j31kw0w01j3.png) no-repeat center;
+      background-size: cover; */
+    }
     .area {
       width: 30vw;
       min-width: 160px;
@@ -19,6 +38,8 @@
 
     .area button {
       position: absolute;
+      width: 8rem;
+      height: 4rem;
       top: 0;
       bottom: 0;
       left: 0;
@@ -54,44 +75,89 @@
       min-width: 160px;
       margin: 20px auto 0;
       font-size: 16px;
-      display: flex;
     }
     .desc {
       text-align: center;
       font-size: 16px;
-      margin-top: 30px;
+     
     }
     .desc span {
       font-size: 16px;
       margin-right: 6px;
     }
+    .layui-input-block {
+      margin-left: 0;
+    }
+    .content {
+      padding-top: 200px;
+      position: relative;
+      z-index: 100;
+    }
+    .bg {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    .bg-image {
+      width: 100%;
+      filter: blur(5px);
+    }
+    .bg-image::after {
+      content: "";
+      display: block;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+    .inner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(5px);
+    }
   </style>
 </head>
 
 <body>
-  <div class="desc"><span>支持</span><span class="layui-badge layui-bg-orange">点击</span><span class="layui-badge layui-bg-greeb">拖拽</span><span class="layui-badge layui-bg-blue">粘贴</span>上传<span></span></div>
-  <form action="" class="layui-form">
-    <div class="chose-ocrtype">
-      <span style="line-height: 36px;">请先选择识别类型</span>
-      <div class="layui-input-block">
-        <input type="radio" name="type" value="0" title="标准版">
-        <input type="radio" name="type" value="1001" title="高精准含位置版" checked>
+  <div class="container">
+      <div class="bg">
+        <img src="/images/0072Vf1pgy1foxlned8v0j31kw0w01j3.png" alt="" class="bg-image" width="100%" />
+        <div class="inner"></div>
       </div>
+    <div class="content">
+      <button style="width: 80px;height:30px;margin-bottom: 60px;" onclick="window.location = '/'">回到首页</button>
+      <div class="desc"><span>支持</span><span class="layui-badge layui-bg-orange">点击</span><span class="layui-badge layui-bg-greeb">拖拽</span><span class="layui-badge layui-bg-blue">粘贴</span><span style="margin-right: 0;">上传</span></div>
+      <form action="" class="layui-form">
+        <div class="chose-ocrtype">
+          <div style="line-height: 36px;">请先选择识别类型</div>
+          <div class="layui-input-block">
+            <input type="radio" name="type" value="0" title="标准版">
+            <input type="radio" name="type" value="1001" title="高精准含位置版" checked>
+          </div>
+        </div>
+    
+      </form>
+      <div class="area" id="upload-box">
+        <button type="button" class="layui-btn" id="test1">
+          <i class="layui-icon">&#xe67c;</i>上传图片
+        </button>
+        <div class="layui-progress layui-progress-big" lay-filter="demo" lay-showPercent="true">
+          <div class="layui-progress-bar" lay-percent="0%"></div>
+        </div>
+      </div>
+      <div class="identify-res" id="showResult">
+        <div class="title">识别结果</div>
+        <div class="result" id="result">
+        </div>
+      </div>
+
     </div>
 
-  </form>
-  <div class="area" id="upload-box">
-    <button type="button" class="layui-btn" id="test1">
-      <i class="layui-icon">&#xe67c;</i>上传图片
-    </button>
-    <div class="layui-progress layui-progress-big" lay-filter="demo" lay-showPercent="true">
-      <div class="layui-progress-bar" lay-percent="0%"></div>
-    </div>
-  </div>
-  <div class="identify-res" id="showResult">
-    <div class="title">识别结果</div>
-    <div class="result" id="result">
-    </div>
   </div>
   <!-- <iframe src="http://appmarketbak2.kingdee.com/jdyapps" frameborder="0" style="display: block;width: 600px;height: 600px;margin: 0 auto"></iframe> -->
   <script src="https://www.layuicdn.com/layui-v2.5.6/layui.all.js"></script>

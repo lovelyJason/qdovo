@@ -12,6 +12,7 @@
     "version": "5.4.0"
   },
   "dependencies": {
+    "@jiangtj/hexo-extend-theme": "^0.2.4",
     "hexo": "5.4.0",
     "hexo-deployer-git": "^2.1.0",
     "hexo-generator-archive": "^1.0.0",
@@ -24,6 +25,9 @@
     "hexo-renderer-ejs": "^1.0.0",
     "hexo-renderer-marked": "^2.0.0",
     "hexo-renderer-stylus": "^1.1.0",
-    "hexo-server": "^1.0.0"
+    "hexo-server": "^1.0.0",
+    "postcss": "^8.4.23",
+    "postcss-import": "^15.1.0",
+    "tailwindcss": "^3.3.2"
   }
 }

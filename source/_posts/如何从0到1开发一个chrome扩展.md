@@ -1,5 +1,7 @@
 ---
 title: 如何从0到1开发一个chrome扩展
+date: 2022-05-10
+headimg: https://images.unsplash.com/photo-1682027888746-25b1af7bd47f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=900&q=80
 ---
 
 实战一个实用性的chrome扩展,倍速播放视频

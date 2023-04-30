@@ -4,9 +4,9 @@
 
 # Site
 title: 前端ovo
-favicon: https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/u=3614830019,3989570087&fm=26&gp=0.jpg
+favicon: https://cdn.qdovo.com/img/u=3614830019,3989570087&fm=26&gp=0.jpg
 subtitle: ''
-description: ''
+description: '专注于前端技术分享，css, js, vue, react'
 keywords:
 author: Jason Huang
 language: zh-CN
@@ -101,57 +101,38 @@ ignore:
 theme: volantis
 # 覆盖主题配置
 theme_config:
-  style:
-    sidebar:
-      effect: [blur] # [shadow, floatable, blur]
-    body:
-      effect: [] # [shadow, floatable, blur]
-    color:
-      site_footer: 'rgba(8,8,8,0.75)'
-      hljs_before_color: 'rgb(150, 162, 171)'
-    # 滚动条,有浏览器兼容性
-    scrollbar:
-      size: 4px
-      border: 2px
-      color: '#2196f3'
-      hover: '#ff5722'
+  # style:
+  #   sidebar:
+  #     effect: [blur] # [shadow, floatable, blur]
+  #   body:
+  #     effect: [] # [shadow, floatable, blur]
+  #   color:
+  #     site_footer: 'rgba(8,8,8,0.75)'
+  #     hljs_before_color: 'rgb(150, 162, 171)'
+  #   # 滚动条,有浏览器兼容性
+  #   scrollbar:
+  #     size: 4px
+  #     border: 2px
+  #     color: '#2196f3'
+  #     hover: '#ff5722'
 
   # 小部件
   widget:
     # 博客设置
     blogger:
-      avatar: https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/timg.jpeg
+      avatar: https://cdn.qdovo.com/img/timg.jpeg
     # qrcode widget
     donate:
       images:
-        - https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/0c141f62ffef39f3c5b85918adff975a.png
-        - https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/dfca5b720de4970eb67179b49e8ed895.png
+        - https://cdn.qdovo.com/img/0c141f62ffef39f3c5b85918adff975a.png
+        - https://cdn.qdovo.com/img/dfca5b720de4970eb67179b49e8ed895.png
   meta:
     updated:
       title: '本页文档最后更新于：'
     author:
-      avatar: https://cdn.jsdelivr.net/gh/lovelyJason/cdn-gallery/img/timg.jpeg
+      avatar: https://cdn.qdovo.com/img/timg.jpeg
       name: Jason Huang
       url: https://qdovo.com
-  comments:
-    title: <i class='fas fa-comments'></i> 用户交流区
-    # subtitle: 这里仅供用户之间进行交流，有任何疑问请前往GitHub提交Issue。在评论区进行提问将不会收到开发者的任何回复！
-    valine:
-      appId: I9b5AiKsmFxDd9nQAibzVAe3-gzGzoHsz
-      appKey: bFrvxEDJJJsEWvUtkHjE1fpJ
-      requiredFields: ['nick']
-      path: /
-      placeholder: 这里仅供用户之间进行交流！,
-      visitor: true
-  footer:
-    layout: [aplayer, social, license, info, beian, copyright]
-    social:
-      - icon: fas fa-rss
-        url: atom.xml
-      - icon: fab fa-github
-        url: https://github.com/lovelyJason
-    copyright: '[Copyright © 2020-2020 Jason Huang](https://qdovo.com)'
-    beian: <a href="https://beian.miit.gov.cn">皖ICP备17007694号-3</a>
 
 # stylus
 stylus:
@@ -163,3 +144,30 @@ deploy:
   type: 'git'
   repo: https://github.com/lovelyJason/qdovo.git
   branch: gh-pages
+
+# layout文件替换
+theme_plus:
+  custom_path: source/_layout
+import: # 这个应该是主题为配合hexo官方的injector，为了达到行为一致，通过配置项适配其api的注入https://volantis.js.org/v5/site-settings/#%E4%BD%BF%E7%94%A8-Import-%E5%AF%BC%E5%85%A5%E5%A4%96%E9%83%A8%E6%96%87%E4%BB%B6
+  # yml中输入多行字符串，参考https://cloud.tencent.com/developer/article/1985817
+  head_end:
+    <link rel="stylesheet" href="/css/tailwind.css">
+    <script defer type="text/javascript" src="/js/iconfont.js"></script>
+  body_end: 
+    - >-
+      <script>
+        var OriginTitle = document.title
+        document.addEventListener('visibilitychange', function () {
+          if (document.hidden) {
+            document.title = '👀你小子跑哪去了'
+          } else {
+            document.title = '💯回来啦~'
+            setTimeout(function () {
+                if(!document.hidden){
+                    document.title = OriginTitle
+                }
+            }, 2000)
+          }
+        })
+      </script>
+  
