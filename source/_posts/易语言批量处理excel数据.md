@@ -2,7 +2,7 @@
 title: 易语言批量处理excel数据
 date: 2022-11-15
 categories: 易语言
-headimg: https://images.unsplash.com/photo-1681913783675-081428f1ac9c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80
+headimg: https://cdn.qdovo.com/img/headimg/libxl.png
 ---
 
 易语言批量处理excel数据，自动化地完成工作

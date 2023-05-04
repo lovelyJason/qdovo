@@ -17,7 +17,7 @@ const util = require('util')
 
 // 传入错误的参数默认是head_end
 // hexo.extend.injector.register('body_begin', '<script src="/js/timeline.js"></script>')  // 在<body>中的<div class="pace pace-inactive"></div>之后， <!-- import body_begin begin-->之前
-// hexo.extend.injector.register('body_end', '<src="/js/timeline.js"></script>') // 注入位置在</body>之前,<!-- Custom Files bodyEnd end-->之后,标注有<!-- hexo injector body_end start -->
+// hexo.extend.injector.register('body_end', '<script src="/js/timeline.js"></script>') // 注入位置在body最底部,<!-- Custom Files bodyEnd end-->之后,在<!-- hexo injector body_end start --><!-- hexo injector body_end end -->之间
 // 如果传入第三个参数post，代表只在post layout载入，page等布局同理
 // 官方文档说注入器被用于将静态代码片段注入生成的 HTML 的 <head> 和/或 <body> 中。Hexo 将在 after_render:html 过滤器 之前 完成注入。
 // 因此injector不能注入ejs,而主题的theme_inject在generateBefore事件中处理，即静态文件生成前
@@ -46,7 +46,7 @@ console.log = function() {
 }
 
 // 修改需要clean一下.且这里只会服务启动的时候调用
-// 草这里有bug， is_current内部函数有问题，根据传入的path与hexo.path对比，但是hexo.path不存在，可能是页面此时还未载入,很多全局变量都不存在，但是site下的局部变量还是有的,但是数据不全？
+// 草这里有bug， is_current内部函数有问题，根据传入的path与hexo.path对比，但是hexo.path不存在，可能是页面此时还未载入,很多全局变量都不存在，但是site下的局部变量还是有的,但是数据不全？文章长度也为0？
 /*
 posts
 pages
@@ -98,3 +98,23 @@ hexo.extend.filter.register('before_post_render', async function(data){   // 执
   }
   return data
 });
+// plugin:jquery-tagcanvas
+// hexo.extend.injector.register('body_end', () => {
+//   if(is_current('tags')) {  // 这玩意只能在模板里使用，现在页面还没初始化
+//     console.log(true)
+//   }
+// })
+
+// hexo.extend.filter.register('before_generate', function(data){
+//   // let localData = hexo.locals.toObject().posts
+//   // console.log(hexo.locals.get('pages'))
+//   let pages = hexo.locals.get('pages')
+//   let reg = /{jason\s+\S+\s+jason}/g
+//   pages.forEach(page => {
+//     if(page.import && page.import.body_end) {
+
+//       page.import.body_end[1].replace(reg, 'hello wolrd')
+//     }
+//   })
+// });
+

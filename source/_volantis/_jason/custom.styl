@@ -1,4 +1,3 @@
-/* // 文章预览 */
 :root {
   --tw-bg-opacity: 1;
   --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/)
@@ -40,8 +39,6 @@
   --tw-drop-shadow: var(--tw-empty,/*!*/ /*!*/);
 }
 $post-list-max-width = 980px
-// TODO:即将引入Tailwind CSS
-// TODO:做动态引入css
 // 本文件用于新增的元素样式
 .icon
  width: 1em; height: 1em;
@@ -397,7 +394,7 @@ $post-list-max-width = 980px
               background-color: rgba(248, 214, 185, 0.5);
             }
             p {
-              
+
             }
             .tli {
               margin-bottom: 3.915px;
@@ -435,6 +432,10 @@ $post-list-max-width = 980px
 // @media (min-width: 734px)
 //   &
 //     width: 734px;
+
+/* // 文章预览 */
+$mobile-postitem-height = 450px;
+$mobile-postimage-height = 200px;
 #l_main
   .recent-posts
     width: 90%;
@@ -450,7 +451,7 @@ $post-list-max-width = 980px
         box-shadow: var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow);
         cursor: pointer;
         @media screen and (max-width: 700px)
-          height: 460px;
+          height: $mobile-postitem-height;
           display: block;
           flex-direction: unset;
 
@@ -492,7 +493,7 @@ $post-list-max-width = 980px
         @media (min-width: 734px)
           &
             height: 22.5rem;
-        
+
         .pin
           top: 28px;
         .post-item-image
@@ -502,7 +503,7 @@ $post-list-max-width = 980px
           filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
           @media screen and (max-width: 700px)
             width: 100%;
-            height: 200px;
+            height: $mobile-postimage-height;
             position: absolute;
             top: 0;
           .imgage-wrapper
@@ -514,10 +515,10 @@ $post-list-max-width = 980px
               vertical-align: middle;
               border: none;
               object-fit: cover;
-              transition-property: all; 
+              transition-property: all;
               transition-duration: .5s;
               transition-timing-function: cubic-bezier(.4,0,.2,1);
-                
+
         .post-item-content
           width: 40%;
           height: 100%;
@@ -525,10 +526,14 @@ $post-list-max-width = 980px
           flex: 1 1;
           @media screen and (max-width: 700px)
             width: 100%;
-            height: 260px;
+            height: $mobile-postitem-height - $mobile-postimage-height;
             position: absolute;
             bottom: 0;
             text-align: unset;
+            h3
+              white-space: nowrap;
+              text-overflow: ellipsis;
+              overflow: hidden;
           .post-meta
             margin: 0;
             padding: 0;
@@ -536,7 +541,7 @@ $post-list-max-width = 980px
             display: flex;
             position: absolute;
             bottom: 20px;
-            li 
+            li
               padding: 3px 10px;
               background-color: #eee;
               border-radius: 3px;
@@ -549,7 +554,7 @@ $post-list-max-width = 980px
                 color: #fff;
                 background: rgb(0,245,189);
                 background: linear-gradient(45deg, rgba(0,245,189,0.6755077030812324) 20%, rgba(0,165,245,1) 50%, rgba(245,0,165,0.5242471988795518) 80%);
-        
+
           .article-title
             margin: 1em 0;
           .article-desc
@@ -571,6 +576,17 @@ $post-list-max-width = 980px
                 p
                   -webkit-line-clamp: 3;
 
+// 图表页
+#l_main.l_main_charts
+  &.no_sidebar
+    max-width: $layout-width; // 原样式把sidebar宽度减去了感觉有点小
+  article#charts
+    h2
+      font-weight: 600;
+      margin-top: 0;
+    .chart-item
+      width: 90%;
+      margin: 0 auto;
 
 
 

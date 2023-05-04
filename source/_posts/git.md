@@ -1,10 +1,10 @@
 ---
 group: list
 title: git常用命令
-categories: 技术
-tags: [git, 工具]
+categories: 团队协作
+tags: [git]
 date: 2022-03-12
-headimg: https://images.unsplash.com/photo-1681238093193-1b3a8fcdf225?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=762&q=80
+headimg: https://cdn.qdovo.com/img/headimg/git.png
 ---
 
 git常用命令集合

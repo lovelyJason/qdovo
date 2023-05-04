@@ -3,7 +3,7 @@ title: vscode调试篇指南
 categories: 工具
 tags: [工具]
 date: 2022-9-10
-headimg: https://images.unsplash.com/photo-1680973543493-6c03e66402fe?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80
+headimg: https://cdn.qdovo.com/img/headimg/vscode.jpg
 ---
 
 分享一些在工作和生活当中很常见的些关于vscode调试的用法,让调试更方便

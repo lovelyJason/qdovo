@@ -24,7 +24,7 @@
   var script = document.createElement('script');
   script.src="https://cdn.bootcdn.net/ajax/libs/eruda/3.0.0/eruda.min.js";
   document.body.appendChild(script);
-  script.onload = function () { 
+  script.onload = function () {
     eruda.init()
     eruda.get('console').config.set('catchGlobalErr', true)
   }

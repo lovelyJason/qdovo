@@ -1,0 +1,39 @@
+<%- partial('_pre') %>
+<%
+page.comments = false;
+if (!page.robots) {
+  page.robots = 'noindex,follow';
+}
+%>
+<div id="l_main" class='<%- page.sidebar == false ? ' no_sidebar' : '' %>'>
+  <% if (site.posts && site.posts.length > 0) { %>
+    <% if ((page.layout == 'tag')||(page.layout == 'tags')) { %>
+      <div class='post-wrapper'>
+        <article id="tag" class="post article white-box reveal <%- theme.custom_css.body.effect.join(' ') %>">
+          <h2><%- page.title %></h2>
+          <div class="all-tags">
+            <% let tc = theme.sidebar.widget_library.tagcloud; %>
+            <%- list_tags({}) %>
+          </div>
+          <br>
+          <%- page.content %>
+          <div id="myCanvasContainer">
+            <canvas width="300" height="300" id="myCanvas">
+                  <p>Anything in here will be replaced on browsers that support the canvas element</p>
+            </canvas>
+          </div>
+          <div id="tags" style="display: none;">
+            <ul>
+              <% site.tags.forEach(function(tag) { %>
+                <li><a href="#" target="_blank"><%= tag.name %></a></li>
+              <% }) %>
+            </ul>
+          </div>
+        </article>
+      </div>
+    <% } else { %>
+      <%- partial('_partial/archive') %>
+    <% } %>
+  <% } %>
+</div>
+<%- partial('_partial/side') %>

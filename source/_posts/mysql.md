@@ -2,7 +2,7 @@
 title: mysql基础命令
 date: 2019-08-10 13:54:21
 tags: [数据库]
-headimg: https://images.unsplash.com/photo-1681702098098-2fe493efa10a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80
+headimg: https://cdn.qdovo.com/img/headimg/mysql.png
 ---
 
 mysql常用命令集合

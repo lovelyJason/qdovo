@@ -2,7 +2,7 @@
 title: rollup初识
 date: 2022-05-09
 categories: 前端工程化
-headimg: https://images.unsplash.com/photo-1681520349987-efd0b1039dc7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80
+headimg: https://cdn.qdovo.com/img/headimg/rollupjs.jpg
 ---
 
 rollup作为一款流行的ES Module打包器， 可以将我们项目当中散落的模块打包成整块的代码，从而使我们的代码更好地运行在浏览器环境和nodejs环境，除此之外， 还可以打包成其他模块化规范的代码，目前包括Vue， React等主流的框架、库，都是采用的rollup进行打包。

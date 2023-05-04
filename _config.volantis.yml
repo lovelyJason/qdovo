@@ -25,14 +25,14 @@ navbar:
       icon: iconfont icon-fangzi
       svg: icon-fangzi
       url: /
-    - name: 分类
-      icon: iconfont icon-ziyuan
-      url: categories/
-      svg: icon-ziyuan
-    - name: 标签
-      icon: iconfont icon-biaoqian
-      svg: icon-biaoqian
-      url: tags/
+    # - name: 分类
+    #   icon: iconfont icon-ziyuan
+    #   url: categories/
+    #   svg: icon-ziyuan
+    # - name: 标签
+    #   icon: iconfont icon-biaoqian
+    #   svg: icon-biaoqian
+    #   url: tags/
     - name: 归档
       icon: iconfont icon-nav_wodeguidang
       svg: icon-nav_wodeguidang
@@ -69,6 +69,10 @@ navbar:
       icon: iconfont icon-19
       svg: icon-more
       rows:
+        - name: 文章统计
+          icon: iconfont icon-tongji2
+          svg: icon-tongji2
+          url: /charts
         - name: 小站历程
           icon: iconfont icon-fenlei-lishicopy
           svg: icon-fenlei-lishicopy
@@ -84,6 +88,7 @@ navbar:
           target: _blank
 ############################### Sidebar ############################### > start
 sidebar:
+  for_page: [blogger, category, tagcloud, donate, webinfo]
   # 侧边栏组件库
   widget_library:
     # ---------------------------------------

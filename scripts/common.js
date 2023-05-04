@@ -7,5 +7,5 @@ const js = hexo.extend.helper.get('js').bind(hexo)
 
 // 貌似返回的script里面的代码不会执行，应该是只能插入scrpit src=这种代码
 hexo.extend.injector.register('body_end', () => {
-  return js('/js/eruda.js')
+  return js('/js/common.js')
 })

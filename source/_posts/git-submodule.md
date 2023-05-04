@@ -1,8 +1,8 @@
 ---
 title: git submodule的认识
 date: 2023-02-05 17:02
-categories: git
-tag: [团队协作]
+categories: 团队协作
+tags: [git]
 headimg: https://media.licdn.com/dms/image/D4D12AQHGjohbHwcvPQ/article-cover_image-shrink_720_1280/0/1678105336139?e=2147483647&v=beta&t=zwKQy9Exo94G8Z_LL-VUvXVujcF5r7h7fy7L6wRvp40
 ---
 

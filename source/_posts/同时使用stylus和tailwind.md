@@ -2,7 +2,8 @@
 title: 同时使用stylus和tailwind css
 data: 2023-04-29
 categories: css
-headimg: https://cdn.qdovo.com/img/headimg/u%3D1448850802%2C404074960%26fm%3D253%26fmt%3Dauto%26app%3D138%26f%3DJPEG.webp
+tags: css
+headimg: https://cdn.qdovo.com/img/headimg/tailwind.jpg
 ---
 
 最近看上了tailwind，想集成到hexo中来。tailwind是一款功能类优先的css框架， 集成了很多类。如官方对他的介绍，表面看上去是在开历史的倒车，在html中书写一大堆的类名，但是当我真正去使用它的时候，觉得是不一样的体验，而且是能有效提升样式编写效率

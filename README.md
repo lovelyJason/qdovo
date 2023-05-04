@@ -140,6 +140,8 @@ hexo默认安装了`hexo-renderer-marked`和`hexo-renderer-ejs`,node_modules中�
   - 执行 after_post_render 过滤器
 
   好像在ejs中写了front-matter也解析了，真神奇.并且这时候post变量有当前文章，还有自定义的ejs渲染后的文章，好友链页，为啥？
++ 数组arr: ['a', 'b', 'c']传递到ejs中，<%= arr %>或<%- arr %>会变成a,b,c.采取的事"<%= arr %>".split(',')
++ 模板里经常看到从配置项里面传入单行或多行html代码， 但是不能传入ejs的标识符。如`<script>let obj = <%- JSON.stringify(theme.sidebar.for_page) %></script>`, script是能渲染出来，但是`<%- JSON.stringify(theme.sidebar.for_page) %>`会被原样当成字符串渲染
 
 
 ## 主题升级log
