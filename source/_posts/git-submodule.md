@@ -3,7 +3,8 @@ title: git submodule的认识
 date: 2023-02-05 17:02
 categories: 团队协作
 tags: [git]
-headimg: https://media.licdn.com/dms/image/D4D12AQHGjohbHwcvPQ/article-cover_image-shrink_720_1280/0/1678105336139?e=2147483647&v=beta&t=zwKQy9Exo94G8Z_LL-VUvXVujcF5r7h7fy7L6wRvp40
+tag_icons: icon-git
+headimg: https://cdn.qdovo.com/img/headimg/1678105336139.png
 ---
 
 在大型的项目开发中，往往会遇到项目里面互相嵌套的关系，听起来你会联想到monorep，lerna，但是不在本文的讨论范围内。有些核心代码需要权限管控，此时这一部分的项目可以移接到submodule中去管理

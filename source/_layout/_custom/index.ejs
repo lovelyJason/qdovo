@@ -1,0 +1,113 @@
+<%_ if(is_current('charts')) { _%>
+  <%
+  const [dateArr, postsLengthArr] = sortPostsByDate(site.posts.data)
+  const [categoryArr, categoryPostsLengthArr] = sortCategorires(site.categories.data)
+  const [tagArr, tagPostsLengthArr] = sortTags(site.tags.data)
+  %>
+  <script src="/js/chart.xkcd.min.js" ></script>
+  <script>
+    let dateArr = "<%- dateArr %>".split(',')
+    let postsLengthArr = "<%- postsLengthArr %>".split(',')
+    let categoryArr = "<%- categoryArr %>".split(',')
+    let categoryPostsLengthArr = "<%- categoryPostsLengthArr %>".split(',')
+    let tagArr = "<%- tagArr %>".split(',')
+    let tagPostsLengthArr = "<%- tagPostsLengthArr %>".split(',')
+    postsLengthArr = postsLengthArr.map(val => {
+      val = Number.parseInt(val)
+      return val
+    })
+    categoryPostsLengthArr = categoryPostsLengthArr.map(val => {
+      val = Number.parseInt(val)
+      return val
+    })
+    tagPostsLengthArr = tagPostsLengthArr.map(val => {
+      val = Number.parseInt(val)
+      return val
+    })
+    const svg1 = document.querySelector('.posts-chart .line-chart');
+    const lineChart = new chartXkcd.Line(svg1, {
+      //图表的标题
+      title: '文章归档统计图',
+      // 图表的 x 标签
+      xLabel: '日期',
+      // 图表的 y 标签
+      yLabel: '文章篇数',
+      // 需要可视化的数据
+      data: {
+        // x 轴数据
+        labels: dateArr,
+        // y 轴数据
+        datasets: [{
+            // 第二组数据
+            label: '篇数',
+            data: postsLengthArr,
+        }],
+      },
+      // 可选配置以自定义图表的外观
+      options: {
+        // 自定义要在 y 轴上看到的刻度号（默认为 3）
+        yTickCount: 3,
+        // 指定要放置图例的位置
+        legendPosition: chartXkcd.config.positionType.upLeft
+      }
+    });
+    const svg2 = document.querySelector('.categories-chart .pie-chart')
+    const pieChart = new chartXkcd.Pie(svg2, {
+      // 图表的标题
+      title: '文章分类统计图',
+      // 需要可视化的数据
+      data: {
+        labels: categoryArr,
+        datasets: [{
+          data: categoryPostsLengthArr,
+        }],
+      },
+      options: {
+        // 指定空的饼图半径
+        innerRadius: 0.5,
+        // 指定要放置图例的位置
+        legendPosition: chartXkcd.config.positionType.upRight,
+      },
+    });
+    const svg3 = document.querySelector('.tags-chart .bar-chart')
+    const barChart = new chartXkcd.Bar(svg3, {
+      // 图表的标题
+      title: '文章标签统计图',
+      // xLabel: '', // optional
+      // yLabel: '', // optional
+      // 图表数据
+      data: {
+        labels: tagArr,
+        datasets: [{
+          data: tagPostsLengthArr,
+        }],
+      },
+      options: {
+        // 自定义要在 y 轴上看到的刻度号（默认为 3）
+        yTickCount: 2,
+      },
+    });
+
+  </script>
+<%_ } _%>
+<!-- page.__index为true为任意页的文章列表， page.category有值代表某个分类下的页面 -->
+<%_ if(page.__index || page.category) { _%>
+  <script>
+    console.log('%c%s', "color:#fff7d3;background-color:#00a5f5;font-size:12px;padding:3px;", "qdovo: <%= (page.__index && '列表页') || page.category %>", "正在访问这个分类")
+  </script>
+<%_ } _%>
+<%_ if(is_current('talking')) { _%>
+  <script src="/js/isotope.pkgd.min.js"></script>
+  <script src="/js/isotope-fit-columns.js"></script>
+  <%_ if(theme.plugins.globalJquery) { _%>
+    <script>
+      // $('.grid').isotope({
+      //   itemSelector: '.grid-item',
+      //   layoutMode: 'masonry',
+      //   masonry: {
+      //     gutter: 20
+      //   }
+      // })
+    </script>
+  <%_ } _%>
+<%_ } _%>

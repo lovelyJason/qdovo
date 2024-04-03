@@ -1,7 +1,8 @@
 ---
 title: 易语言批量处理excel数据
 date: 2022-11-15
-categories: 易语言
+categories: 其他
+tags: 易语言
 headimg: https://cdn.qdovo.com/img/headimg/libxl.png
 ---
 

@@ -1,0 +1,11 @@
+<%- partial('_pre') %>
+<section id="<%- item.class %>" class="widget <%- item.class %> <%- page.widget_platform %> ">
+  <%- partial('header', {item: item}) %>
+  <div class='content'>
+    <div class="welcome">
+      欢迎来自<span class="ad-info active"></span>的小伙伴，您当前的IP地址为：<span class="local-ip active"></span>
+      <br>
+      您现在距离站长大约<span class="distance active"></span>公里
+    </div>
+  </div>
+</section>

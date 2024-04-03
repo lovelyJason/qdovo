@@ -6,6 +6,10 @@ const js = hexo.extend.helper.get('js').bind(hexo)
 // 在 after_render:html 过滤器 之前 完成注入。
 
 // 貌似返回的script里面的代码不会执行，应该是只能插入scrpit src=这种代码
+hexo.extend.injector.register('body_end', '<script src="/js/books.js"></script>')
 hexo.extend.injector.register('body_end', () => {
   return js('/js/common.js')
+})
+hexo.extend.injector.register('body_end', () => {
+  return js('//js.users.51.la/21635105.js')
 })

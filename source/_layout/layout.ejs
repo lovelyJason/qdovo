@@ -51,102 +51,11 @@
       <%_ }) _%>
     <%_ } _%>
     <%_ if (page.import && page.import.body_end_raw){ _%>
-      <%- page.import.body_end_raw %>
+      <%- render(page.import.body_end_raw, 'ejs') %>
     <%_ } _%>
     <!-- front-matter body_end end -->
     <!-- TODO:硬编码了一个页面，暂时不知如何处理，先放这 -->
+    <%- partial('_custom/index') %>
     <!-- 这里再之后是hexo injector -->
-    <%_ if(is_current('charts')) { _%>
-      <%
-      const [dateArr, postsLengthArr] = sortPostsByDate(site.posts.data)
-      const [categoryArr, categoryPostsLengthArr] = sortCategorires(site.categories.data)
-      const [tagArr, tagPostsLengthArr] = sortTags(site.tags.data)
-      %>
-      <script src="/js/chart.xkcd.min.js" ></script>
-      <script>
-        let dateArr = "<%- dateArr %>".split(',')
-        let postsLengthArr = "<%- postsLengthArr %>".split(',')
-        let categoryArr = "<%- categoryArr %>".split(',')
-        let categoryPostsLengthArr = "<%- categoryPostsLengthArr %>".split(',')
-        let tagArr = "<%- tagArr %>".split(',')
-        let tagPostsLengthArr = "<%- tagPostsLengthArr %>".split(',')
-        postsLengthArr = postsLengthArr.map(val => {
-          val = Number.parseInt(val)
-          return val
-        })
-        categoryPostsLengthArr = categoryPostsLengthArr.map(val => {
-          val = Number.parseInt(val)
-          return val
-        })
-        tagPostsLengthArr = tagPostsLengthArr.map(val => {
-          val = Number.parseInt(val)
-          return val
-        })
-        const svg1 = document.querySelector('.posts-chart .line-chart');
-        const lineChart = new chartXkcd.Line(svg1, {
-          //图表的标题
-          title: '文章归档统计图',
-          // 图表的 x 标签
-          xLabel: '日期',
-          // 图表的 y 标签
-          yLabel: '文章篇数',
-          // 需要可视化的数据
-          data: {
-            // x 轴数据
-            labels: dateArr,
-            // y 轴数据
-            datasets: [{
-                // 第二组数据
-                label: '篇数',
-                data: postsLengthArr,
-            }],
-          },
-          // 可选配置以自定义图表的外观
-          options: {
-            // 自定义要在 y 轴上看到的刻度号（默认为 3）
-            yTickCount: 3,
-            // 指定要放置图例的位置
-            legendPosition: chartXkcd.config.positionType.upLeft
-          }
-        });
-        const svg2 = document.querySelector('.categories-chart .pie-chart')
-        const pieChart = new chartXkcd.Pie(svg2, {
-          // 图表的标题
-          title: '文章分类统计图',
-          // 需要可视化的数据
-          data: {
-            labels: categoryArr,
-            datasets: [{
-              data: categoryPostsLengthArr,
-            }],
-          },
-          options: {
-            // 指定空的饼图半径
-            innerRadius: 0.5,
-            // 指定要放置图例的位置
-            legendPosition: chartXkcd.config.positionType.upRight,
-          },
-        });
-        const svg3 = document.querySelector('.tags-chart .bar-chart')
-        const barChart = new chartXkcd.Bar(svg3, {
-          // 图表的标题
-          title: 'github stars VS patron number',
-          // xLabel: '', // optional
-          // yLabel: '', // optional
-          // 图表数据
-          data: {
-            labels: tagArr,
-            datasets: [{
-              data: tagPostsLengthArr,
-            }],
-          },
-          options: {
-            // 自定义要在 y 轴上看到的刻度号（默认为 3）
-            yTickCount: 2,
-          },
-        });
-
-      </script>
-    <%_ } _%>
   </body>
 </html>

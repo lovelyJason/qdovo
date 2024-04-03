@@ -7,7 +7,7 @@ title: 前端ovo
 favicon: https://cdn.qdovo.com/img/u=3614830019,3989570087&fm=26&gp=0.jpg
 subtitle: ''
 description: '专注于前端技术分享，css, js, vue, react'
-keywords:
+keywords: 'css, js, vue, react, 面试经'
 author: Jason Huang
 language: zh-CN
 timezone: ''
@@ -151,9 +151,13 @@ theme_plus:
 import: # 这个应该是主题为配合hexo官方的injector，为了达到行为一致，通过配置项适配其api的注入https://volantis.js.org/v5/site-settings/#%E4%BD%BF%E7%94%A8-Import-%E5%AF%BC%E5%85%A5%E5%A4%96%E9%83%A8%E6%96%87%E4%BB%B6
   # yml中输入多行字符串，参考https://cloud.tencent.com/developer/article/1985817
   head_end:
+    <link rel="stylesheet" href="https://at.alicdn.com/t/c/font_1966281_6uwa12migip.css?spm=a313x.7781069.1998910419.95&file=font_1966281_6uwa12migip.css">
     <link rel="stylesheet" href="/css/tailwind.css">
     <script defer type="text/javascript" src="/js/iconfont.js"></script>
   body_end: 
+    # - <script  src="https://npm.elemecdn.com/vue@3.2.47"></script>
+    # - <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    # - <script src="/js/vue/vue.runtime.global.js"></script>
     - >-
       <script>
         var OriginTitle = document.title

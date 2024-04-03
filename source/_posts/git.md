@@ -3,6 +3,7 @@ group: list
 title: git常用命令
 categories: 团队协作
 tags: [git]
+tag_icons: icon-git
 date: 2022-03-12
 headimg: https://cdn.qdovo.com/img/headimg/git.png
 ---

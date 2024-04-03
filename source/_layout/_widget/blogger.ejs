@@ -1,0 +1,72 @@
+<%- partial('_pre') %>
+<section class="widget <%- item.class %> <%- page.widget_platform %> ">
+  <div class='content'>
+    <% if (item.avatar) { %>
+      <% if (item.url) { %>
+        <a class='avatar flat-box <%- item.shape %>' href='<%- url_for(item.url) %>'>
+          <img no-lazy src='<%- item.avatar %>'/>
+        </a>
+      <% } else { %>
+        <div class='avatar'>
+          <img no-lazy src='<%- item.avatar %>'/>
+        </div>
+      <% } %>
+    <% } %>
+    <% if (item.title || item.subtitle || item.jinrishici) { %>
+      <div class='text'>
+        <% if (item.title){ %>
+          <h2><%- item.title %></h2>
+        <% } %>
+        <% if (item.subtitle){ %>
+          <%- markdown(item.subtitle) %>
+        <% } %>
+        <% if (item.jinrishici){ %>
+          <p><span id="jinrishici-sentence"><%- item.jinrishici != true ? item.jinrishici : config.title %></span></p>
+          <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+        <% } %>
+      </div>
+    <% } %>
+    <div class="posts-info">
+      <div class="item">
+        <a href="/archives/">
+          <div class="head">文章</div>
+          <div class="num"><%= site.posts.data.length %></div>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/categories/">
+          <div class="head">分类</div>
+          <div class="num"><%= site.categories.data.length %></div>
+        </a>
+      </div>
+      <div class="item">
+        <a href="/tags/">
+          <div class="head">标签</div>
+          <div class="num"><%= site.tags.length %></div>
+        </a>
+      </div>
+    </div>
+    <a class="card-info-btn" target="_blank"  href="https://github.com/lovelyJason/" title="前往作者的Github">
+      <i class="fab fa-github"></i>
+      <span>Follow Me</span>
+    </a>
+    <% if (item.social && item.social.length > 0) { %>
+      <div class="social-wrapper">
+        <% getList(item.social).forEach(function(value){ %>
+          <% if (value.url && (value.icon || value.img || value.avatar)) { %>
+            <a href="<%= url_for(value.url) %>"
+              class="social <%- value.icon %> flat-btn"
+              target="_blank"
+              rel="external nofollow noopener noreferrer">
+              <% if (value.img) { %>
+                <img src="<%- value.img %>"/>
+              <% } else if (value.avatar) { %>
+                <img src="<%- value.avatar %>" style="border-radius:120px"/>
+              <% } %>
+            </a>
+          <% } %>
+        <%})%>
+      </div>
+    <% } %>
+  </div>
+</section>

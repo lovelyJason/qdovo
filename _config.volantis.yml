@@ -14,7 +14,24 @@ cover:
       img: https://cdn.qdovo.com/icons/blog.svg
       url: /
 ############################### Cover ############################### > end
-
+csp:
+  enable: false
+  content: "
+    default-src 'self' https:;
+    block-all-mixed-content;
+    base-uri 'self' https:;
+    form-action 'self' https:;
+    worker-src 'self' https:;
+    connect-src 'self' https: *;
+    img-src 'self' data: https: *;
+    media-src 'self' https: *;
+    font-src 'self' data: https: *;
+    frame-src 'self' https: *;
+    manifest-src 'self' https: *;
+    child-src https:;
+    script-src 'self' https: 'unsafe-inline' *;
+    style-src 'self' https: 'unsafe-inline' *;
+  "
 navbar:
   logo:
     img: https://cdn.qdovo.com/assets/logo-transparent.png
@@ -49,6 +66,18 @@ navbar:
       icon: iconfont icon-about
       svg: icon-about
       url: about/
+    - name: 个人
+      icon: iconfont icon-gerenxinxi_baobeixingming
+      svg: icon-gerenxinxi_baobeixingming
+      rows:
+        - name: 说说
+          icon: iconfont icon-shuoshuo
+          svg: icon-shuoshuo
+          url: /talking
+        - name: 网盘
+          icon: iconfont icon-wangpan
+          svg: icon-wangpan
+          url: http://pan.qdovo.com
     - name: 工具
       icon: iconfont icon-jiacu
       svg: icon-gongju
@@ -76,7 +105,7 @@ navbar:
         - name: 小站历程
           icon: iconfont icon-fenlei-lishicopy
           svg: icon-fenlei-lishicopy
-          url: /history
+          url: /timeline
         - name: 加需求
           icon: iconfont icon-jiacu
           svg: icon-jiacu
@@ -86,9 +115,12 @@ navbar:
           svg: icon-book
           url: /book
           target: _blank
+    - name: 暗黑模式 # 可自定义
+      icon: fas fa-moon # 可自定义
+      toggle: darkmode
 ############################### Sidebar ############################### > start
 sidebar:
-  for_page: [blogger, category, tagcloud, donate, webinfo]
+  for_page: [blogger, notice, tagcloud, donate, webinfo]
   # 侧边栏组件库
   widget_library:
     # ---------------------------------------
@@ -104,6 +136,13 @@ sidebar:
           url: https://github.com/lovelyJason/
         - icon: fas fa-headphones-alt
           url: /
+    # 公告
+    notice:
+      class: notice
+      display: [desktop]
+      header:
+        icon: iconfont icon-wnt_gonggao
+        title: 公告
     # category widget
     category:
       class: category
@@ -171,6 +210,8 @@ plugins:
 
   # 生成rss
   hexo-generator-feed:
+  darkmode:
+    enable: true
 
 pages:
   # 友链页面配置
@@ -182,23 +223,191 @@ rightmenu:
 
 highlight:
   enable: false
-
+############################### Comments ############################### > start
 comments:
   title: <i class='fas fa-comments'></i> 用户交流区
-  # subtitle: 这里仅供用户之间进行交流，有任何疑问请前往GitHub提交Issue。在评论区进行提问将不会收到开发者的任何回复！
-  valine:
-    appId: I9b5AiKsmFxDd9nQAibzVAe3-gzGzoHsz
-    appKey: bFrvxEDJJJsEWvUtkHjE1fpJ
-    requiredFields: ['nick']
-    path: /
-    placeholder: 这里仅供用户之间进行交流！,
-    visitor: true
+  subtitle:
+  service: giscus
+  # 可选评论系统 #
+
+  # artalk
+  # https://artalk.js.org/
+  # https://github.com/ArtalkJS/Artalk
+  artalk:
+    server: https://yours-artalk-domain    # 修改为自建的后端服务地址
+    path:  # 全局评论地址
+    placeholder: # 评论占位
+    visitor: true # 是否显示文章阅读数
+    latex: false # 启用 Latex 支持
+    # artalk 有三类图片：1.上传至服务端 2.上传至服务端后利用upgit上传至图床 3.前端上传至图床（本配置为此类）
+    # 配置此项时将覆盖服务端上传能力
+    imageUploader:
+      # 以兰空图床为例，下列填写内容为：
+      # url: 'https://xxxxxx/api/v1/upload'
+      # token: 'Bearer xxxxxxxxxxxxxx'
+      # resp: 'data.links.url'
+      api: # 图床地址
+      token: # 图床验证
+      resp: # 图片地址返回值的字段
+    # 更多置项可在 Artalk 后端进行配置，详见 https://artalk.js.org/guide/backend/fe-control.html
+    # 也可以在此处继续参考上方例子进行配置，不建议重写配置的字段除上方所述外还有：
+    # [el, useBackendConf, pageKey, pageTitle, site, darkMode, pvEl, imgUploader]
+
+  # giscus
+  # https://giscus.app
+  # https://github.com/laymonage/giscus
+  giscus:
+    # 以下配置按照 yml 格式增删填写即可
+    repo: lovelyJason/giscus
+    repo-id: R_kgDOJhutkg
+    category: Announcements
+    category-id: DIC_kwDOJhutks4CWaio
+    mapping: "url"
+    reactions-enabled: "1"
+    emit-metadata: "0"
+    lang: "zh-CN"
+    crossorigin: anonymous
+    # 以上配置按照 yml 格式增删填写即可
+    theme:
+      light: "light" # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/css/giscus/light.css
+      dark: "dark" # https://cdn.jsdelivr.net/gh/volantis-x/cdn-volantis@master/css/giscus/dark.css
+
+  # beaudar
+  # https://beaudar.lipk.org/
+  beaudar:
+    repo: xxx/xxx
+    issue-term: pathname
+    issue-number:
+    branch: main
+    position: top
+    order: desc
+    theme:
+      light: github-light
+      dark: github-dark
+    label: ✨💬✨
+
+  # utterances
+  # https://utteranc.es/
+  utterances:
+    repo: xxx/xxx
+    issue-term: pathname
+    issue-number:
+    theme:
+      light: github-light
+      dark: github-dark
+    label: ✨💬✨
+
+  # Disqus
+  # https://disqus.com
+  disqus:
+    shortname:
+    # optional
+    autoload: false
+    path: # 全局评论地址
+
+  # DisqusJS
+  # https://github.com/SukkaW/DisqusJS
+  disqusjs:
+    path: # 全局评论地址
+    # 配置项按照yml格式继续填写即可 除了 [siteName url identifier] 选项
+    #shortname:
+    #api:
+    #apikey:
+    #admin:
+    #nesting:
+
+  # Gitalk
+  # https://gitalk.github.io/
+  gitalk:
+    # 配置项按照yml格式继续填写即可 除了 [id distractionFreeMode] 选项
+    clientID:
+    clientSecret:
+    repo:
+    owner:
+    admin: # []
+    path: # 全局评论地址
+
+  # https://vssue.js.org/zh/
+  vssue:
+    owner:
+    repo:
+    clientId:
+    clientSecret:
+
+  # https://www.livere.com
+  livere:
+    uid:
+
+  # Isso
+  # https://posativ.org/isso/
+  isso:
+    url: https://example.com/(path/)
+    src: https://example.com/(path/)js/embed.min.js
+    css:
+    gravatar:
+
+  # https://www.barkdull.org/software/hashover
+  hashover:
+    src: https://example.com/(path/)comments.php
+
+  # Twikoo
+  # https://twikoo.js.org/
+  twikoo:
+    path: # 全局评论地址
+    # 其他配置项按照yml格式继续填写即可 除了 [el path] 选项
+    envId: xxxxxxxxxxxxxxx # 腾讯云环境填 envId；Vercel 环境填地址（https://xxx.vercel.app）
+    placeholder: #全局评论占位，也可以在管理面板中的配置管理处设置（此处优先级更高）
+    visitor: true # 是否显示文章阅读数
+
+  # Waline
+  # https://waline.js.org/
+  waline:
+    path: # 全局评论地址 目前设置全局评论地址后visitor失效,这是waline的问题
+    placeholder: # 评论占位提示
+    serverURL: # Waline 的服务端地址（必填） 测试用地址: https://waline.vercel.app
+    imageUploader:
+      # 适配了兰空图床V1、V2版本
+      # 以兰空图床V1为例，下列填写内容为：
+      # fileName: file
+      # tokenName: Authorization
+      # api: https://xxxxxx/api/v1/upload
+      # token: Bearer xxxxxxxxxxxxxx
+      # resp: data.links.url
+      # 以兰空图床V2为例，下列填写内容为：
+      # fileName: image
+      # tokenName: token
+      # api: https://xxxxxx/api/upload
+      # token: xxxxxxxxxxxxxx
+      # resp: data.url
+      fileName: # 根据版本二选一
+      tokenName: # 根据版本二选一
+      api: # 图床 api 地址
+      token: # 图床验证
+      resp: # 图片地址返回值的字段
+    pageview: true # 是否显示文章阅读数
+    comment: true  # 是否显示文章评论数
+    # 其他配置项按照yml格式继续填写即可 除了 [el path imageUploader] 选项
+    # 组件属性地址：https://waline.js.org/reference/component.html
+    # meta: ['nick', 'mail', 'link']
+
+  # Discuss
+  # https://discuss.js.org
+  discuss:
+    serverURLs: # Discuss server address url
+    visitStat: true # 是否显示文章阅读数
+    # https://discuss.js.org/Quick-Start.html#path
+
+
+############################### Comments ############################### > end
 
 ############################### Color Scheme ############################### > start
 # 本博客主题色：#00a5f5
 color_scheme:
   common:
     theme: '#00a5f5'
+  light:
+    card: 'rgba(250, 250, 250, 98%)'
+    inlinecode: '#c7254e'
 ############################### Color Scheme ############################### > end
 
 ############################### custom_css ############################### > start
@@ -207,6 +416,7 @@ custom_css:
     effect: [pei-header]
   sidebar:
     effect: [blur]
+    width: 300px
     # [shadow, floatable, blur]
     # shadow：卡片阴影。
     # floatable：当鼠标移动到容器内时，呈现出浮起来的效果。

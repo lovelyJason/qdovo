@@ -1,4 +1,4 @@
-- group: 前端盆友们
+- group: 全栈盆友们
   icon: fas fa-user-tie
   items:
   -
@@ -12,9 +12,23 @@
     name: IceOfSummer
     avatar: https://xds.asia/avatar/1.webp
     url: https://iceofsummer.github.io/
-
+  # -
+  #   title: BOB’S BLOG
+  #   name: BOB’S BLOG
+  #   avatar: https://www.itbob.cn/img/avatar.png
+  #   url: https://www.itbob.cn/friends
   -
-    title: BOB’S BLOG
-    name: BOB’S BLOG
-    avatar: https://www.itbob.cn/img/avatar.png
-    url: https://www.itbob.cn/friends
+    title: 七鳄の学习格
+    name: 七鳄の学习格
+    avatar: https://blog.gmcj0816.top/img/SeriousWission_TouXiangPic.png
+    url: https://blog.gmcj0816.top/
+  -
+    title: MHuiG
+    name: MHuiG
+    avatar: https://fastly.jsdelivr.net/npm/mhg@latest
+    url: https://mhuig.top
+  -
+    title: MengFanjun
+    name: MengFanjun
+    avatar: https://docimg8.docs.qq.com/image/AgAAC6u-TVONyp0Kq39IFoywP8F8mOod.png
+    url: https://mfjblog.top

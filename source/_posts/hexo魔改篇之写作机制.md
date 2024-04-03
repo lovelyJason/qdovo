@@ -1,6 +1,7 @@
 ---
 title: hexo魔改篇（一）之写作机制
 tags: hexo
+tag_icons: icon-hexo
 headimg: https://cdn.qdovo.com/img/headimg/hexo.png
 ---
 

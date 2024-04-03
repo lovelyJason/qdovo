@@ -1,0 +1,32 @@
+<%- partial('_pre') %>
+<%
+page.comments = false;
+if (!page.robots) {
+  page.robots = 'noindex,follow';
+}
+%>
+<div id="l_main" class='l_main_charts <%- page.sidebar == false ? ' no_sidebar' : '' %>'>
+  <% if (site.posts && site.posts.length > 0) { %>
+    <% if (page.layout == 'charts') { %>
+      <div class='post-wrapper'>
+        <article id="charts" class="post article white-box reveal <%- theme.custom_css.body.effect.join(' ') %>">
+          <h2><%- page.title %></h2>
+          <div class="posts-chart chart-item">
+            <svg class="line-chart"></svg>
+          </div>
+          <div class="categories-chart chart-item">
+            <svg class="pie-chart"></svg>
+          </div>
+          <div class="tags-chart chart-item">
+            <svg class="bar-chart"></svg>
+          </div>
+          <br>
+          <%- page.content %>
+        </article>
+      </div>
+    <% } else { %>
+      <%- partial('_partial/archive') %>
+    <% } %>
+  <% } %>
+</div>
+<%- partial('_partial/side') %>

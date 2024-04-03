@@ -36,12 +36,14 @@ hexo.extend.helper.register('sortCategorires', function(categories) {
     length: [Getter]
   }
   */
-  let categoryArr = [], postsLengthArr = []
+  let categoryNameArr = [], postsLengthArr = []
+  let postsLengthCollection = {}
   categories.forEach(category => {
-    categoryArr.push(category.name)
+    categoryNameArr.push(category.name)
     postsLengthArr.push(category.length)
+    postsLengthCollection[category.name] = category.length
   })
-  return [categoryArr, postsLengthArr]
+  return [categoryNameArr, postsLengthArr, postsLengthCollection]
 })
 
 hexo.extend.helper.register('sortTags', function(tags) {

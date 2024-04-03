@@ -7,7 +7,7 @@ const util = require('util')
 // hexo.extend.filter.register('theme_inject', function(injects) {
 //   const is_current =  hexo.extend.helper.get('is_current').bind(hexo)
 //   if(is_current('history')) {
-//     // injects.postEnd.file('history', 'source/_tpl/timeline.ejs')
+//     // injects.postEnd.file('history', 'xxx')
 //     // injects.bodyEnd.raw('load-custom-js', '<scrip src="/js/timeline.js"></script>')  // 注入位置在</body>之前
 //   }
 //   if(is_current('needs')) {
@@ -32,8 +32,6 @@ const util = require('util')
 //   })
 // });
 // console.log(hexo.locals.get('posts'))   // 这里的局部变量只有site下面的
-
-hexo.extend.injector.register('body_end', '<script src="/js/books.js"></script>')
 
 // TODO:我要在自定义ejs中注入变量
 var logPath = 'upgrade.log'

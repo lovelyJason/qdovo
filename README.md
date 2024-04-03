@@ -142,7 +142,7 @@ hexo默认安装了`hexo-renderer-marked`和`hexo-renderer-ejs`,node_modules中�
   好像在ejs中写了front-matter也解析了，真神奇.并且这时候post变量有当前文章，还有自定义的ejs渲染后的文章，好友链页，为啥？
 + 数组arr: ['a', 'b', 'c']传递到ejs中，<%= arr %>或<%- arr %>会变成a,b,c.采取的事"<%= arr %>".split(',')
 + 模板里经常看到从配置项里面传入单行或多行html代码， 但是不能传入ejs的标识符。如`<script>let obj = <%- JSON.stringify(theme.sidebar.for_page) %></script>`, script是能渲染出来，但是`<%- JSON.stringify(theme.sidebar.for_page) %>`会被原样当成字符串渲染
-
++ 在front-matter中定义的属性里面，link，script这种代码能够加载成功，但是如果里面包含ejs的标识符时，会被当成字符串原样渲染，可以通过调用hexo的render函数解决这个问题.但是按照这种写法在markdown里面定义的ejs中获取不到那些变量，可能是上下文不同
 
 ## 主题升级log
 
@@ -162,10 +162,11 @@ theme_inject的filter好像不是hexo官方的，来自于本主题
 
 在主题目录下的layout下新建ejs模板即可，然后在文章中更改layout为新建的模板文件名即可，也不需要使用hexo的api注册layout之类的
 
-## 其他问题
+## 其他问题和记录
 
-hexo.locals是什么？scripts中的插件中不能直接获取全局变量，如posts，这是在ejs模板中使用的。
+- hexo.locals是什么？scripts中的插件中不能直接获取全局变量，如posts，这是在ejs模板中使用的。
 本地变量/局部变量用于模板渲染，就是模板中的site变量，有post, pages, categories, tags，这是属于hexo api, 用来编写插件
+- 基于layout书写的md文章，正文内容在模板中以page.content变量进行渲染，好像friends布局，page.more和page.content内容一致
 
 ## 进行中的改动
 

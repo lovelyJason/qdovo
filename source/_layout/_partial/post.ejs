@@ -33,6 +33,9 @@
   <% } %>
   <!-- 图钉end -->
   <!-- post.headimg在此处无效，自带头图 -->
+  <%
+  let tagIcons = getList(post.tag_icons)
+  %>
   <% if (index % 2 === 0) { %>
     <div  class="post-item-image" >
       <div class="imgage-wrapper relative">
@@ -89,8 +92,15 @@
       <!-- tags -->
       <% if (post.tags.length) { %>
         <ul class="tags">
-          <% post.tags.forEach(function(post){ %>
-            <li class="tag"><%= post.name %></li>
+          <% post.tags.forEach(function(tag, index){ %>
+            <li class="tag">
+              <% if(tagIcons[index]) { %>
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#<%= tagIcons[index] %>"></use>
+                </svg>
+              <% } %>
+              <%= tag.name %>
+            </li>
           <% }) %>
         </ul>
       <% } %>
@@ -176,8 +186,15 @@
       <!-- tags -->
       <% if (post.tags.length) { %>
         <ul class="tags">
-          <% post.tags.forEach(function(post){ %>
-            <li class="tag"><%= post.name %></li>
+          <% post.tags.forEach(function(tag, index){ %>
+            <li class="tag">
+              <% if(tagIcons[index]) { %>
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#<%= tagIcons[index] %>"></use>
+                </svg>
+              <% } %>
+              <%= tag.name %>
+            </li>
           <% }) %>
         </ul>
       <% } %>

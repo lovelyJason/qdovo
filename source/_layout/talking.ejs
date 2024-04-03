@@ -1,0 +1,40 @@
+<%- partial('_pre') %>
+<%
+page.comments = false;
+if (!page.robots) {
+  page.robots = 'noindex,follow';
+}
+%>
+<div id="l_main" class='l_main_talking <%- page.sidebar == false ? ' no_sidebar' : '' %>'>
+  <div class="talking-card">
+    <h2>说说</h2>
+    <div class="subtitle">
+      记录·随笔·吐槽·灵感
+    </div>
+    <div class="grid" data-isotope='{ "itemSelector": ".grid-item", "layoutMode": "masonry", "masonry": { "gutter": 20 } }'>
+      <div class="grid-item grid-item--height2">
+        博客魔改正在进行中，努力成为CV大师
+        <p>不过感觉还是应该以内容为主，毕竟我是一个专业的，啊哈哈哈哈哈😇</p>
+      </div>
+      <div class="grid-item">先找工作吧！！！</div>
+      <div class="grid-item">感觉缺了点什么东西来着，是什么呢</div>
+      <div class="grid-item grid-item--height2">
+        开始在看电视剧《漫长的季节》
+        <p>悬疑，凶杀剧，先打发一个下午吧</p><br>
+        <p>话说深圳这个天气也太扯淡了吧！😪</p>
+      </div>
+      <div class="grid-item grid-item--height2">
+        <p>计划进行一次博客重构，主要还是以SSR为主，引入一些构建工具，压缩下包，有时候网速还是顶不住这么多请求</p>
+      </div>
+      <div class="grid-item">五一结束了，可以收收心了</div>
+      <div class="grid-item">
+        最近的编码计划
+        <p>1. 刷下面试题</p>
+        <p>2. 写一个某某功能的vscode扩展</p>
+        <p>3. 写一个某某功能的Chrome扩展</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+<%- partial('_partial/side') %>

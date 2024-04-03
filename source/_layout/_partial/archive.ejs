@@ -27,10 +27,26 @@ if(page.posts && page.posts.length > 0) {
     if(!post.pin) sortedPosts.push(post)
   })
 }
+const [categoryNameArr, postsLengthArr, postsLengthCollection] = sortCategorires(site.categories)
 %>
 
 <% if (site.posts && site.posts.length > 0) { %>
   <div class="recent-posts">
+    <div class="category-bar">
+      <ul>
+        <li class="<%= page.__index ? 'active' : '' %>">
+          <a href="/">首页<sup style="font-size: 75%;position: relative;line-height:0;top: 0.5em;">&ensp;</sup></a>
+        </li>
+        <% categoryNameArr.forEach(function(categoryName) { %>
+          <li class="<%= page.category === categoryName ? 'active' : '' %>">
+            <a href="/categories/<%= categoryName %>/"><%= categoryName %><sup style="font-size: 75%;position: relative;line-height:0;top: 0.5em;"><%= postsLengthCollection[categoryName] %></sup></a>
+          </li>
+        <% }) %>
+      </ul>
+      <div class="more <%= page.layout === 'category' ? 'active' : '' %>" style="min-width: 46px;">
+        <a href="/categories/">更多<sup style="font-size: 75%;position: relative;line-height:0;top: 0.5em;">&ensp;</sup></a>
+      </div>
+    </div>
     <section class="post-list">
       <% sortedPosts.forEach(function(post, index){ %>
         <%- partial('post', {post: post, index}) %>
